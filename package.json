@@ -1,5 +1,5 @@
 {
-  "name": "next-js-blog",
+  "name": "next-typescript-blog",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,10 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "eslint": "8.7.0",
-    "eslint-config-next": "12.0.9"
+    "@types/node": "17.0.13",
+    "@types/react": "17.0.38",
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.9",
+    "typescript": "4.5.5"
   }
 }
