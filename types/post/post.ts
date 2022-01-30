@@ -8,6 +8,11 @@ type PostType = {
     url: string;
   };
   content: string;
+  coverImage: string;
+  author: {
+    name: string;
+    picture: string;
+  };
 };
 
 export default PostType;

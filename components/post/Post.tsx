@@ -9,7 +9,7 @@ type Props = {
 const PostComponent = ({ post }: Props) => {
   return (
     <div className={styles.header}>
-      <Link href={`/post/${post.slug}`}>
+      <Link href={`/posts/${post.slug}`}>
         <a>{post.title}</a>
       </Link>
       <img src={post.thumbnail} />

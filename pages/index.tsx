@@ -18,7 +18,7 @@ const Index = ({ postList }: Props) => {
       </Head>
 
       <main className={styles.main}>
-        {postList.map((post: Post, index: number) => (
+        {postList.map((post, index) => (
           <PostComponent post={post} key={index} />
         ))}
       </main>
