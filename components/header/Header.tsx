@@ -1,8 +1,7 @@
-import type { NextComponentType } from "next";
 import styles from "./Header.module.css";
 import Link from "next/link";
 
-const Header: NextComponentType = () => {
+const HeaderComponent = () => {
   return (
     <header className={styles.header}>
       <Link href="/tech">
@@ -12,10 +11,10 @@ const Header: NextComponentType = () => {
         <a className={styles.item}>Life</a>
       </Link>
       <Link href="/look-back">
-        <a className={styles.item}>Look-Back</a>
+        <a className={styles.item}>Self-Reflection</a>
       </Link>
     </header>
   );
 };
 
-export default Header;
+export default HeaderComponent;
