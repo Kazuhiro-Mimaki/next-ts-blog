@@ -1,5 +1,5 @@
 import Parser from "rss-parser";
-// import { FeedItem, IFeedItem } from "../types/feed-item/feedItem";
+import fs from "fs-extra";
 
 export interface IFeedItem {
   title: string;
@@ -29,7 +29,7 @@ export const techUrlList = [
 
 const parser = new Parser();
 
-async function getFeedPosts(urlList: string[]) {
+async function getPostList(urlList: string[]) {
   const feedItemList: IFeedItem[] = [];
   for (const url of urlList) {
     const feed = await parser.parseURL(url);
@@ -57,4 +57,8 @@ function sortItemList(feedItemList: IFeedItem[]) {
   );
 }
 
-getFeedPosts(techUrlList);
+(async function () {
+  const postList = await getPostList(techUrlList);
+  fs.ensureDirSync("_tech");
+  fs.writeJsonSync("_tech/posts.json", postList);
+})();
