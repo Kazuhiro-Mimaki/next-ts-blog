@@ -1,9 +1,24 @@
 .container {
   min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 50px;
+}
+
+.article {
+  max-width: 500px;
+  margin: 2rem 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.content {
+  font-size: 0.9rem;
 }

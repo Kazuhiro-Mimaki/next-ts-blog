@@ -4,6 +4,7 @@ import fs from "fs-extra";
 export interface IFeedItem {
   title: string;
   link: string;
+  content: string;
   isoDate: string;
   dateMiliSeconds: number;
 }
@@ -11,12 +12,14 @@ export interface IFeedItem {
 export class FeedItem {
   public title: string;
   public link: string;
+  public content: string;
   public isoDate: string;
   public dateMiliSeconds: number;
 
   constructor(_feedItem: FeedItem) {
     this.title = _feedItem.title;
     this.link = _feedItem.link;
+    this.content = _feedItem.content;
     this.isoDate = _feedItem.isoDate;
     this.dateMiliSeconds = _feedItem.dateMiliSeconds;
   }
@@ -34,12 +37,13 @@ async function getPostList(urlList: string[]) {
   for (const url of urlList) {
     const feed = await parser.parseURL(url);
     if (feed?.items.length === 0) return [];
-    feed.items.map(({ title, link, isoDate }) => {
+    feed.items.map(({ title, link, content, isoDate }) => {
       const dateMiliSeconds = isoDate ? new Date(isoDate).getTime() : 0;
-      if (title && link && isoDate) {
+      if (title && link && content && isoDate) {
         const feedItem = new FeedItem({
           title,
           link,
+          content,
           isoDate,
           dateMiliSeconds,
         });
