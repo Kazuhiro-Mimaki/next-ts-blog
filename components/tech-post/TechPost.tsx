@@ -1,5 +1,6 @@
 import { FeedItem } from "../../lib/rssParser";
 import styles from "./TechPost.module.css";
+import Image from "next/image";
 
 type Props = {
   head: string;
@@ -9,13 +10,33 @@ type Props = {
 const TechPost = ({ head, postList }: Props) => {
   return (
     <section className={styles.container}>
-      <h1>{head}</h1>
+      <div className={styles.head}>
+        <Image
+          src={`/${head}.svg`}
+          alt={`${head} Logo`}
+          width={20}
+          height={20}
+        />
+        <h1 className={styles.service}>{head}</h1>
+      </div>
       <div className={styles.articles}>
         {postList.map((post, index) => (
-          <a href={post.link} key={index} className={styles.article}>
-            <h4 className={`${styles.title} ${styles[head]}`}>{post.title}</h4>
+          <div className={styles.article} key={index}>
+            <a href={post.link} target="_blank" rel="noopener noreferrer">
+              <h4 className={`${styles.title} ${styles[head]}`}>
+                {post.title}
+              </h4>
+            </a>
             <p className={styles.content}>{post.omittedContent}...</p>
-          </a>
+            <a
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles["button-link"]}
+            >
+              <button className={styles.button}>続きを読む</button>
+            </a>
+          </div>
         ))}
       </div>
     </section>
