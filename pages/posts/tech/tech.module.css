@@ -1,36 +1,4 @@
 .container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  margin: 0 50px;
-}
-
-.article {
-  max-width: 500px;
-  margin: 2rem 0;
-}
-
-.contents {
-  height: 100vh;
-  overflow-y: scroll;
-  /* invisible scroll bar */
-  scrollbar-width: none;
-}
-
-/* invisible scroll bar */
-.contents::-webkit-scrollbar {
-  display: none;
-}
-
-.title {
-  font-weight: bold;
-}
-
-.content {
-  font-size: 0.9rem;
 }

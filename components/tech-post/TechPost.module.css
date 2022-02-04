@@ -1,0 +1,29 @@
+.container {
+  min-height: 100vh;
+  margin: 0 3rem;
+}
+
+.articles {
+  height: 100vh;
+  overflow-y: scroll;
+  /* invisible scroll bar */
+  scrollbar-width: none;
+}
+
+/* invisible scroll bar */
+.articles::-webkit-scrollbar {
+  display: none;
+}
+
+.article {
+  max-width: 400px;
+  margin: 2rem 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.content {
+  font-size: 0.9rem;
+}

@@ -1,6 +1,7 @@
 import styles from "./tech.module.css";
 import zennPostList from "../../../_tech/_zenn/posts.json";
 import qiitaPostList from "../../../_tech/_qiita/posts.json";
+import { TechPostComponent } from "../../../components/componentProvider";
 import { FeedItem } from "../../../lib/rssParser";
 
 type Props = {
@@ -11,32 +12,8 @@ type Props = {
 const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
   return (
     <div className={styles.container}>
-      <section className={styles.section}>
-        <h1>Zenn</h1>
-        <div className={styles.contents}>
-          {zennPostList.map((post, index) => (
-            <div className={`${styles.article} ${styles.zenn}`}>
-              <a href={post.link} key={index} className={styles.title}>
-                {post.title}
-              </a>
-              <p className={styles.content}>{post.omittedContent}...</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className={styles.section}>
-        <h1>Qiita</h1>
-        <div className={styles.contents}>
-          {qiitaPostList.map((post, index) => (
-            <div className={`${styles.article} ${styles.qiita}`}>
-              <a href={post.link} key={index} className={styles.title}>
-                {post.title}
-              </a>
-              <p className={styles.content}>{post.omittedContent}...</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <TechPostComponent head="Zenn" postList={zennPostList} />
+      <TechPostComponent head="Qiita" postList={qiitaPostList} />
     </div>
   );
 };
