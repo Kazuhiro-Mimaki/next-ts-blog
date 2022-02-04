@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh;
+  height: 100vh;
   margin: 0 3rem;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .articles {
-  height: 100vh;
+  height: 70vh;
   overflow-y: scroll;
   /* invisible scroll bar */
   scrollbar-width: none;
