@@ -62,22 +62,9 @@
   font-size: 0.9rem;
 }
 
-.button-link {
+.right {
   display: flex;
   justify-content: right;
-}
-
-.button {
-  cursor: pointer;
-  border: none;
-  padding: 5px 10px;
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
-}
-
-.button:hover {
-  opacity: 0.8;
 }
 
 @keyframes fadeIn {
