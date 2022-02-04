@@ -4,7 +4,7 @@ import fs from "fs-extra";
 export interface IFeedItem {
   title: string;
   link: string;
-  content: string;
+  omittedContent: string;
   isoDate: string;
   dateMiliSeconds: number;
 }
@@ -12,14 +12,14 @@ export interface IFeedItem {
 export class FeedItem {
   public title: string;
   public link: string;
-  public content: string;
+  public omittedContent: string;
   public isoDate: string;
   public dateMiliSeconds: number;
 
   constructor(_feedItem: FeedItem) {
     this.title = _feedItem.title;
     this.link = _feedItem.link;
-    this.content = _feedItem.content;
+    this.omittedContent = _feedItem.omittedContent;
     this.isoDate = _feedItem.isoDate;
     this.dateMiliSeconds = _feedItem.dateMiliSeconds;
   }
@@ -32,12 +32,13 @@ async function getFeedItems(url: string) {
   const feed = await parser.parseURL(url);
   if (feed?.items.length === 0) return [];
   feed.items.map(({ title, link, content, isoDate }) => {
+    const omittedContent = content ? content.substring(0, 200) : "";
     const dateMiliSeconds = isoDate ? new Date(isoDate).getTime() : 0;
     if (title && link && content && isoDate) {
       const feedItem = new FeedItem({
         title,
         link,
-        content,
+        omittedContent,
         isoDate,
         dateMiliSeconds,
       });

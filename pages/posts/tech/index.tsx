@@ -1,11 +1,11 @@
 import styles from "./tech.module.css";
-import TechPostType from "../../../types/post/techPost";
 import zennPostList from "../../../_tech/_zenn/posts.json";
 import qiitaPostList from "../../../_tech/_qiita/posts.json";
+import { FeedItem } from "../../../lib/rssParser";
 
 type Props = {
-  zennPostList: TechPostType[];
-  qiitaPostList: TechPostType[];
+  zennPostList: FeedItem[];
+  qiitaPostList: FeedItem[];
 };
 
 const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
@@ -18,7 +18,7 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
             <a href={post.link} key={index} className={styles.title}>
               {post.title}
             </a>
-            <p className={styles.content}>{post.content}</p>
+            <p className={styles.content}>{post.omittedContent}...</p>
           </div>
         ))}
       </section>
@@ -29,7 +29,7 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
             <a href={post.link} key={index} className={styles.title}>
               {post.title}
             </a>
-            <p className={styles.content}>{post.content}</p>
+            <p className={styles.content}>{post.omittedContent}...</p>
           </div>
         ))}
       </section>
