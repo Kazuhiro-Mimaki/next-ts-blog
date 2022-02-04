@@ -12,12 +12,10 @@ const TechPost = ({ head, postList }: Props) => {
       <h1>{head}</h1>
       <div className={styles.articles}>
         {postList.map((post, index) => (
-          <div className={styles.article}>
-            <a href={post.link} key={index} className={styles.title}>
-              {post.title}
-            </a>
+          <a href={post.link} key={index} className={styles.article}>
+            <h4 className={`${styles.title} ${styles[head]}`}>{post.title}</h4>
             <p className={styles.content}>{post.omittedContent}...</p>
-          </div>
+          </a>
         ))}
       </div>
     </section>
