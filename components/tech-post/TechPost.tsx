@@ -1,6 +1,7 @@
 import { FeedItem } from "../../lib/rssParser";
 import styles from "./TechPost.module.css";
 import Image from "next/image";
+import { Logo } from "../componentProvider";
 
 type Props = {
   head: string;
@@ -11,14 +12,10 @@ const TechPost = ({ head, postList }: Props) => {
   return (
     <section className={styles.container}>
       <div className={styles.head}>
-        <Image
-          src={`/${head}.svg`}
-          alt={`${head} Logo`}
-          width={20}
-          height={20}
-        />
+        <Logo head={head} />
         <h1 className={styles.service}>{head}</h1>
       </div>
+
       <div className={styles.articles}>
         {postList.map((post, index) => (
           <div className={styles.article} key={index}>
