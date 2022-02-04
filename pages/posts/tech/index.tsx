@@ -13,25 +13,29 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
     <div className={styles.container}>
       <section className={styles.section}>
         <h1>Zenn</h1>
-        {zennPostList.map((post, index) => (
-          <div className={`${styles.article} ${styles.zenn}`}>
-            <a href={post.link} key={index} className={styles.title}>
-              {post.title}
-            </a>
-            <p className={styles.content}>{post.omittedContent}...</p>
-          </div>
-        ))}
+        <div className={styles.contents}>
+          {zennPostList.map((post, index) => (
+            <div className={`${styles.article} ${styles.zenn}`}>
+              <a href={post.link} key={index} className={styles.title}>
+                {post.title}
+              </a>
+              <p className={styles.content}>{post.omittedContent}...</p>
+            </div>
+          ))}
+        </div>
       </section>
       <section className={styles.section}>
         <h1>Qiita</h1>
-        {qiitaPostList.map((post, index) => (
-          <div className={`${styles.article} ${styles.qiita}`}>
-            <a href={post.link} key={index} className={styles.title}>
-              {post.title}
-            </a>
-            <p className={styles.content}>{post.omittedContent}...</p>
-          </div>
-        ))}
+        <div className={styles.contents}>
+          {qiitaPostList.map((post, index) => (
+            <div className={`${styles.article} ${styles.qiita}`}>
+              <a href={post.link} key={index} className={styles.title}>
+                {post.title}
+              </a>
+              <p className={styles.content}>{post.omittedContent}...</p>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

@@ -15,6 +15,18 @@
   margin: 2rem 0;
 }
 
+.contents {
+  height: 100vh;
+  overflow-y: scroll;
+  /* invisible scroll bar */
+  scrollbar-width: none;
+}
+
+/* invisible scroll bar */
+.contents::-webkit-scrollbar {
+  display: none;
+}
+
 .title {
   font-weight: bold;
 }
