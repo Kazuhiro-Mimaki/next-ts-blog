@@ -1,6 +1,7 @@
 import styles from "./tech.module.css";
 import TechPostType from "../../../types/post/techPost";
-import techPosts from "../../../_tech/posts.json";
+import zennPostList from "../../../_tech/_zenn/posts.json";
+import qiitaPostList from "../../../_tech/_qiita/posts.json";
 
 type Props = {
   zennPostList: TechPostType[];
@@ -17,7 +18,7 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
             <a href={post.link} key={index} className={styles.title}>
               {post.title}
             </a>
-            <div className={styles.content}>{post.content}</div>
+            <p className={styles.content}>{post.content}</p>
           </div>
         ))}
       </section>
@@ -28,7 +29,7 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
             <a href={post.link} key={index} className={styles.title}>
               {post.title}
             </a>
-            <div className={styles.content}>{post.content}</div>
+            <p className={styles.content}>{post.content}</p>
           </div>
         ))}
       </section>
@@ -37,15 +38,6 @@ const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const techPostList = [...techPosts];
-
-  const zennPostList = techPostList.filter((techPost) =>
-    techPost.link.includes("zenn.dev")
-  );
-  const qiitaPostList = techPostList.filter((techPost) =>
-    techPost.link.includes("qiita.com")
-  );
-
   return {
     props: { zennPostList, qiitaPostList },
   };
