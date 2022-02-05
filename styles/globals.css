@@ -7,10 +7,6 @@ body {
   overflow: hidden;
 }
 
-.main {
-  flex: 1;
-}
-
 a {
   color: inherit;
   text-decoration: none;

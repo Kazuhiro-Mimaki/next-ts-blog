@@ -1,9 +1,10 @@
-import HeaderComponent from "./header/Header";
-import FooterComponent from "./footer/Footer";
+import HeaderComponent from "./layout/header/Header";
+import FooterComponent from "./layout/footer/Footer";
 import PostComponent from "./post/Post";
 import TechPostComponent from "./tech-post/TechPost";
 import LogoComponent from "./logo/Logo";
 import LinkButtonComponent from "./button/link-button/LinkButton";
+import LayoutComponent from "./layout/Layout";
 
 export {
   HeaderComponent,
@@ -12,4 +13,5 @@ export {
   TechPostComponent,
   LogoComponent,
   LinkButtonComponent,
+  LayoutComponent,
 };
