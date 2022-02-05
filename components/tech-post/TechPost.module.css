@@ -1,6 +1,6 @@
 .container {
-  height: 100vh;
   margin: 0 3rem;
+  height: calc(100vh - 100px);
 }
 
 .head {
@@ -14,13 +14,6 @@
 .articles {
   height: 70vh;
   overflow-y: scroll;
-  /* invisible scroll bar */
-  scrollbar-width: none;
-}
-
-/* invisible scroll bar */
-.articles::-webkit-scrollbar {
-  display: none;
 }
 
 .article {

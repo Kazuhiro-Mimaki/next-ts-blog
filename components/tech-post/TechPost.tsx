@@ -1,6 +1,6 @@
 import { FeedItem } from "../../lib/rssParser";
 import styles from "./TechPost.module.css";
-import { Logo, LinkButton } from "../componentProvider";
+import { LogoComponent, LinkButtonComponent } from "../componentProvider";
 
 type Props = {
   head: string;
@@ -11,7 +11,7 @@ const TechPost = ({ head, postList }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.head}>
-        <Logo head={head} />
+        <LogoComponent head={head} />
         <h1 className={styles.service}>{head}</h1>
       </div>
 
@@ -25,7 +25,7 @@ const TechPost = ({ head, postList }: Props) => {
             </a>
             <p className={styles.content}>{post.omittedContent}...</p>
             <div className={styles.right}>
-              <LinkButton link={post.link} message={"続きを読む"} />
+              <LinkButtonComponent link={post.link} message={"続きを読む"} />
             </div>
           </div>
         ))}
