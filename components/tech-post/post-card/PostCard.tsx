@@ -12,7 +12,7 @@ const TechPost = ({ head, post, index }: Props) => {
   return (
     <div className={styles.article} key={index}>
       <a href={post.link} target="_blank" rel="noopener noreferrer">
-        <h4 className={`${styles.title} ${styles[head]}`}>{post.title}</h4>
+        <h3 className={`${styles.title} ${styles[head]}`}>{post.title}</h3>
       </a>
       <p className={styles.content}>{post.omittedContent}...</p>
       <div className={styles.right}>

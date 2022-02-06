@@ -12,7 +12,7 @@ const Post = ({ post }: Props) => {
       <time className={`${styles.info} ${styles.left}`}>{post.date}</time>
       <div className={`${styles.info} ${styles.right}`}>
         <Link href={`/posts/${post.slug}`}>
-          <a>{post.title}</a>
+          <h3 className={styles.title}>{post.title}</h3>
         </Link>
         <p className={styles.excerpt}>{post.excerpt}</p>
       </div>
