@@ -6,16 +6,18 @@ type Props = {
   post: Post;
 };
 
-const PostComponent = ({ post }: Props) => {
+const Post = ({ post }: Props) => {
   return (
-    <div className={styles.header}>
-      <Link href={`/posts/${post.slug}`}>
-        <a>{post.title}</a>
-      </Link>
-      <img src={post.thumbnail} />
-      <p>{post.date}</p>
+    <div className={styles.container}>
+      <time className={`${styles.info} ${styles.left}`}>{post.date}</time>
+      <div className={`${styles.info} ${styles.right}`}>
+        <Link href={`/posts/${post.slug}`}>
+          <a>{post.title}</a>
+        </Link>
+        <p className={styles.excerpt}>{post.excerpt}</p>
+      </div>
     </div>
   );
 };
 
-export default PostComponent;
+export default Post;

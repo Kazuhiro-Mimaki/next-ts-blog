@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #4caf93;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.left {
+  margin: 0 auto;
+}
+
+.right {
+  width: 80%;
+}
+
+.excerpt {
+  color: #999;
+}

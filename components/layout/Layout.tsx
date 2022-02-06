@@ -1,4 +1,3 @@
-import { FooterComponent, HeaderComponent } from "../componentProvider";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
@@ -8,9 +7,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <HeaderComponent />
       <main className={styles.main}>{children}</main>
-      <FooterComponent />
     </>
   );
 };
