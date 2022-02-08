@@ -3,6 +3,12 @@ import { join } from "path";
 import matter from "gray-matter";
 import glob from "glob";
 
+export const getSlug = (fullPath: string) => {
+  const slugList = fullPath.split("/");
+  const realSlug = slugList[slugList.length - 1].replace(/\.md$/, "");
+  return realSlug;
+};
+
 export const getPost = (slug: string, fields: string[] = []) => {
   const fileContents = fs.readFileSync(slug, "utf-8");
   const { data, content } = matter(fileContents);
@@ -11,6 +17,9 @@ export const getPost = (slug: string, fields: string[] = []) => {
   };
   const items: Items = {};
   fields.forEach((field) => {
+    if (field === "slug") {
+      items[field] = getSlug(slug);
+    }
     if (field === "content") {
       items[field] = content;
     }
