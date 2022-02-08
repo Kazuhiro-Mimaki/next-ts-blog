@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { getPostBySlug, getPostList } from "../../lib/helper";
+import { getPostBySlug, getPostList } from "../../lib/newHelper";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import PostType from "../../types/post/post";
@@ -46,6 +46,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
+  console.log(params.slug);
   const post = getPostBySlug(params.slug, [
     "title",
     "date",
@@ -68,7 +69,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getPostList(["slug"]);
+  const posts = getPostList("_self-reflection/_2022", ["slug"]);
 
   return {
     paths: posts.map((post) => {
