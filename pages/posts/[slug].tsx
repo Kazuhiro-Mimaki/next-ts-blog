@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { getPostBySlug, getAllPosts, getTarget } from "../../lib/helper";
+import { getAllPosts, getPostBySlug } from "../../lib/helper";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import PostType from "../../types/post/post";
@@ -45,7 +45,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getTarget(params.slug, ["title", "date", "slug", "content"]);
+  const post = getPostBySlug(params.slug, ["title", "date", "slug", "content"]);
   const content = await markdownToHtml(post.content || "");
 
   return {
@@ -59,7 +59,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {
