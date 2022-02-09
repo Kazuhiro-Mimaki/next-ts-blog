@@ -14,12 +14,10 @@ type Props = {
 
 const TechPost = ({ zennPostList, qiitaPostList }: Props) => {
   return (
-    <LayoutComponent>
-      <div className={styles.container}>
-        <TechPostComponent head="Zenn" postList={zennPostList} />
-        <TechPostComponent head="Qiita" postList={qiitaPostList} />
-      </div>
-    </LayoutComponent>
+    <div className={styles.container}>
+      <TechPostComponent head="Zenn" postList={zennPostList} />
+      <TechPostComponent head="Qiita" postList={qiitaPostList} />
+    </div>
   );
 };
 

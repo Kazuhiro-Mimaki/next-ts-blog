@@ -4,6 +4,8 @@ import { getAllPosts, getPostBySlug } from "../../lib/helper";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import PostType from "../../types/post/post";
+import { PostBodyComponent } from "../../components/componentProvider";
+import styles from "./slug.module.css";
 
 type Props = {
   post: PostType;
@@ -22,13 +24,13 @@ const Post = ({ post, morePosts, preview }: Props) => {
         <div>Loading…</div>
       ) : (
         <>
-          <article className="mb-32">
+          <article className={styles.container}>
             <Head>
               <title>{post.title} | Next.js Blog Example</title>
             </Head>
 
             <h1>{post.title}</h1>
-            <p>{post.content}</p>
+            <PostBodyComponent content={post.content} />
           </article>
         </>
       )}

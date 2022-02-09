@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { PostComponent } from "../components/componentProvider";
 import Post from "../types/post/post";
-import { getPostList } from "../lib/helper";
+import { getAllPosts } from "../lib/helper";
 
 type Props = {
   postList: Post[];
@@ -27,13 +27,7 @@ const Index = ({ postList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const postList = getPostList([
-    "title",
-    "date",
-    "slug",
-    "coverImage",
-    "excerpt",
-  ]);
+  const postList = getAllPosts();
 
   return {
     props: { postList },
