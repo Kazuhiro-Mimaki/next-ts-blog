@@ -29,7 +29,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
               <title>{post.title} | Next.js Blog Example</title>
             </Head>
 
-            <h1>{post.title}</h1>
+            <h1 className={styles.title}>{post.title}</h1>
             <PostBodyComponent content={post.content} />
           </article>
         </>

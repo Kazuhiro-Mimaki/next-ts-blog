@@ -10,6 +10,7 @@ type Props = {
 const Index = ({ postList }: Props) => {
   return (
     <div className={styles.container}>
+      <h2 className={styles.title}>月ごとの振り返り</h2>
       <main className={styles.main}>
         {postList.map((post, index) => (
           <PostComponent post={post} key={index} />

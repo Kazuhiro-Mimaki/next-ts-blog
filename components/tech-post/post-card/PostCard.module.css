@@ -6,6 +6,7 @@
 
 .title {
   position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .title::after {
@@ -36,6 +37,7 @@
 .content {
   font-size: 0.9rem;
   line-height: 1.5rem;
+  color: #777;
 }
 
 .right {
