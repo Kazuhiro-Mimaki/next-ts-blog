@@ -1,7 +1,10 @@
-.container h1,
-.container h2 {
+.container h1 {
   border-bottom: solid 2px #4caf93;
-  margin: 2rem 0;
+  margin: 4rem 0 2rem;
+}
+
+.container h3 {
+  margin: 0;
 }
 
 .container ul {
@@ -11,4 +14,13 @@
 .container p,
 .container li {
   line-height: 2rem;
+}
+
+.container p {
+  margin: 0 0 2rem;
+}
+
+.container a {
+  color: #4172b5;
+  text-decoration: underline;
 }
