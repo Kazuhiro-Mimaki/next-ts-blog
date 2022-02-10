@@ -24,9 +24,7 @@ date: "2022-01"
 
 ## Output
 
-【TypeScript】keyof メモ - Qiita
-TypeScript で keyof を利用すると、オブジェクトのプロパティ名を抽出し、ユニオン型を生成できる。 keyof
-qiita.com
+- [【TypeScript】keyof メモ](https://qiita.com/Kazuhiro_Mimaki/items/48e97aa11acea82bb872)
 
 # W (わかったこと)
 
