@@ -26,9 +26,10 @@ export class FeedItem {
 }
 
 const parser = new Parser();
+const filterKeyword = "Monthly Reports";
 
 async function getFeedItems(url: string) {
-  const feedItemList: IFeedItem[] = [];
+  let feedItemList: IFeedItem[] = [];
   const feed = await parser.parseURL(url);
   if (feed?.items.length === 0) return [];
   feed.items.map(({ title, link, content, isoDate }) => {
@@ -45,6 +46,11 @@ async function getFeedItems(url: string) {
       feedItemList.push(feedItem);
     }
   });
+  if (url.includes(feedHashMap["note"])) {
+    feedItemList = feedItemList.filter((item) => {
+      return item.title.match(new RegExp(filterKeyword));
+    });
+  }
   return sortItemList(feedItemList);
 }
 
@@ -55,17 +61,20 @@ function sortItemList(feedItemList: IFeedItem[]) {
   );
 }
 
-export const techUrlMap = {
+export const feedHashMap = {
   qiita: "https://qiita.com/Kazuhiro_Mimaki/feed",
   zenn: "https://zenn.dev/b1essk/feed",
+  note: "https://note.com/b1essk/rss",
 };
 
-(async function () {
-  const zennPosts = await getFeedItems(techUrlMap["zenn"]);
-  fs.ensureDirSync("_tech/_zenn");
-  fs.writeJsonSync("_tech/_zenn/posts.json", zennPosts);
+async function writeJsonSync(serviceName: keyof typeof feedHashMap) {
+  const postList = await getFeedItems(feedHashMap[serviceName]);
+  fs.ensureDirSync(`_feed/${serviceName}`);
+  fs.writeJsonSync(`_feed/${serviceName}/posts.json`, postList);
+}
 
-  const qiitaPosts = await getFeedItems(techUrlMap["qiita"]);
-  fs.ensureDirSync("_tech/_qiita");
-  fs.writeJsonSync("_tech/_qiita/posts.json", qiitaPosts);
+(async function () {
+  writeJsonSync("zenn");
+  writeJsonSync("qiita");
+  writeJsonSync("note");
 })();
