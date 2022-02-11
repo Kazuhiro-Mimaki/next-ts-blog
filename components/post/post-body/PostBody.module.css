@@ -4,9 +4,9 @@
 }
 
 .container h2,
-.container h3,
-.container h4 {
+.container h3 {
   margin: 2rem 0 0.5rem;
+  border-bottom: solid 1px #ddd;
 }
 
 .container h2 + p,
