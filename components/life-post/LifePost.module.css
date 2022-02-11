@@ -1,0 +1,54 @@
+.container {
+  margin-bottom: 3rem;
+}
+
+.title {
+  position: relative;
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  width: 30px;
+  height: 3px;
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  background-color: #4caf93;
+}
+
+.title:hover::after {
+  width: 60px;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+
+.excerpt {
+  color: #777;
+  line-height: 1.5rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    width: 30px;
+  }
+
+  100% {
+    width: 60px;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    width: 60px;
+  }
+
+  100% {
+    width: 30px;
+  }
+}

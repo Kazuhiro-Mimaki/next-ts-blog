@@ -7,6 +7,7 @@ import LinkButtonComponent from "./button/link-button/LinkButton";
 import LayoutComponent from "./layout/Layout";
 import PostCardComponent from "./tech-post/post-card/PostCard";
 import PostBodyComponent from "./post/post-body/PostBody";
+import LifePostComponent from "./life-post/LifePost";
 
 export {
   HeaderComponent,
@@ -18,4 +19,5 @@ export {
   LayoutComponent,
   PostCardComponent,
   PostBodyComponent,
+  LifePostComponent,
 };
