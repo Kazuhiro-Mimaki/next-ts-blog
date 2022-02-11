@@ -24,7 +24,7 @@ const Index = ({ postList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const postList = getPostList("life", ["title", "date", "slug", "leading"]);
+  const postList = getPostList("/life", ["title", "date", "slug", "leading"]);
 
   return {
     props: { postList },

@@ -24,7 +24,7 @@ const Index = ({ postList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const postList = getPostList("self-reflection", [
+  const postList = getPostList("/self-reflection", [
     "title",
     "date",
     "slug",

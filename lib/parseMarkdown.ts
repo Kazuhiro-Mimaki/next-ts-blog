@@ -38,7 +38,7 @@ export const getPost = (slug: string, fields: string[] = []) => {
 };
 
 export const getPostList = (targetDirectory: string, fields: string[] = []) => {
-  const postsDirectory = join(process.cwd(), `_posts/${targetDirectory}`);
+  const postsDirectory = join(process.cwd(), `_posts${targetDirectory}`);
   const files = glob.sync(`${postsDirectory}/**/*.md`);
   const posts = [...files]
     .map((file) => getPost(file, fields))
