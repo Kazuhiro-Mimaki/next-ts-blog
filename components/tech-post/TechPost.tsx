@@ -1,25 +1,22 @@
 import { FeedItem } from "../../types/feed-item/feedItem";
 import styles from "./TechPost.module.css";
-import { LogoComponent, PostCardComponent } from "../componentProvider";
+import { LinkButtonComponent } from "../componentProvider";
 
 type Props = {
-  head: string;
-  postList: FeedItem[];
+  post: FeedItem;
 };
 
-const TechPost = ({ head, postList }: Props) => {
+const TechPost = ({ post }: Props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.head}>
-        <LogoComponent head={head} />
-        <h1 className={styles.service}>{head}</h1>
-      </div>
+      <a href={post.link} target="_blank" rel="noopener noreferrer">
+        <h3 className={`${styles.title}`}>{post.title}</h3>
+      </a>
 
-      <section className={styles.articles}>
-        {postList.map((post, index) => (
-          <PostCardComponent head={head} post={post} key={index} />
-        ))}
-      </section>
+      <p className={styles.leading}>{post.leading}...</p>
+      <div className={styles.right}>
+        <LinkButtonComponent link={post.link} message={"続きを読む"} />
+      </div>
     </div>
   );
 };

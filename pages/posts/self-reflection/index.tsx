@@ -11,8 +11,8 @@ const Index = ({ postList }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles["section-title"]}>
-        <h2 className={styles.title}>振り返りノート</h2>
-        <p className={styles.memo}>毎月のログ</p>
+        <h2 className={styles.title}>SELF-REFLECTION</h2>
+        <p className={styles.memo}>毎月の振り返り</p>
       </div>
       <main className={styles.main}>
         {postList.map((post, index) => (

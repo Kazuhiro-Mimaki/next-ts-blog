@@ -1,27 +1,14 @@
 .container {
-  margin: 0 3rem;
-}
-
-.head {
-  display: flex;
-}
-
-.service {
-  margin-left: 5px;
-}
-
-.articles {
-  height: 65vh;
-  overflow-y: scroll;
-}
-
-.article {
-  display: block;
-  margin: 3rem 0;
+  margin-bottom: 3rem;
+  width: 45%;
 }
 
 .title {
   position: relative;
+}
+
+.title:hover {
+  cursor: pointer;
 }
 
 .title::after {
@@ -33,6 +20,7 @@
   height: 3px;
   animation-name: fadeOut;
   animation-duration: 0.5s;
+  background-color: #4caf93;
 }
 
 .title:hover::after {
@@ -41,21 +29,14 @@
   animation-duration: 0.5s;
 }
 
-.Zenn::after {
-  background-color: #3ea8ff;
-}
-
-.Qiita::after {
-  background-color: #55c500;
-}
-
-.content {
-  font-size: 0.9rem;
+.leading {
+  color: #777;
+  line-height: 1.5rem;
 }
 
 .right {
   display: flex;
-  justify-content: right;
+  justify-content: end;
 }
 
 @keyframes fadeIn {

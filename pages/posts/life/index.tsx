@@ -11,7 +11,7 @@ const Index = ({ postList }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles["section-title"]}>
-        <h2 className={styles.title}>ライフ</h2>
+        <h2 className={styles.title}>LIFE</h2>
         <p className={styles.memo}>日々のメモとか気づきとか</p>
       </div>
       <main className={styles.main}>

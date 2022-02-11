@@ -1,5 +1,24 @@
 .container {
+  margin: 2rem 0 4rem;
+}
+
+.section-title {
+  margin-bottom: 3rem;
+}
+
+.title {
+  margin: 0;
+}
+
+.memo {
+  margin: 0;
+  color: #777;
+}
+
+.main {
+  max-width: 70vw;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

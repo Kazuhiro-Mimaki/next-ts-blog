@@ -5,7 +5,6 @@ import TechPostComponent from "./tech-post/TechPost";
 import LogoComponent from "./logo/Logo";
 import LinkButtonComponent from "./button/link-button/LinkButton";
 import LayoutComponent from "./layout/Layout";
-import PostCardComponent from "./tech-post/post-card/PostCard";
 import PostBodyComponent from "./post-body/PostBody";
 
 export {
@@ -16,6 +15,5 @@ export {
   LogoComponent,
   LinkButtonComponent,
   LayoutComponent,
-  PostCardComponent,
   PostBodyComponent,
 };
