@@ -18,9 +18,6 @@ const HeaderComponent = () => {
           GitHub
         </a>
       </Link>
-      <Link href="/posts/resume">
-        <a className={styles.item}>Resume</a>
-      </Link>
     </header>
   );
 };
