@@ -4,7 +4,8 @@
 }
 
 .container h2,
-.container h3 {
+.container h3,
+.container h4 {
   margin: 2rem 0 0.5rem;
   border-bottom: solid 1px #ddd;
 }
@@ -13,6 +14,14 @@
 .container h3 + p,
 .container h4 + p {
   margin: 0;
+}
+
+.container h2 {
+  font-size: 1.2rem;
+}
+
+.container h3 {
+  font-size: 1rem;
 }
 
 .container ul {
@@ -32,4 +41,14 @@
 .container a {
   color: #4172b5;
   text-decoration: underline;
+}
+
+.container img {
+  max-width: 100%;
+}
+
+.container code {
+  background: #eee;
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
 }
