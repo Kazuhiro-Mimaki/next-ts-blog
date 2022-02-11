@@ -1,29 +1,5 @@
 .container {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.container::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: #4caf93;
-}
-
-.info {
-  margin-bottom: 2rem;
-}
-
-.left {
-  margin: 0 auto;
-}
-
-.right {
-  width: 80%;
+  margin-bottom: 3rem;
 }
 
 .title {
@@ -52,7 +28,7 @@
   animation-duration: 0.5s;
 }
 
-.excerpt {
+.leading {
   color: #777;
   line-height: 1.5rem;
 }

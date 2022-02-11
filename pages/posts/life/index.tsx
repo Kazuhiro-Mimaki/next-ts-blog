@@ -1,7 +1,7 @@
 import styles from "./life.module.css";
-import { LifePostComponent } from "../../../components/componentProvider";
+import { PostComponent } from "../../../components/componentProvider";
 import Post from "../../../types/post/post";
-import { getPostList } from "../../../lib/parsePostList";
+import { getPostList } from "../../../lib/parseMarkdown";
 
 type Props = {
   postList: Post[];
@@ -12,11 +12,11 @@ const Index = ({ postList }: Props) => {
     <div className={styles.container}>
       <div className={styles["section-title"]}>
         <h2 className={styles.title}>ライフ</h2>
-        <p className={styles.memo}>日々のメモとか気づきとか。</p>
+        <p className={styles.memo}>日々のメモとか気づきとか</p>
       </div>
       <main className={styles.main}>
         {postList.map((post, index) => (
-          <LifePostComponent post={post} key={index} />
+          <PostComponent post={post} key={index} />
         ))}
       </main>
     </div>
@@ -24,7 +24,7 @@ const Index = ({ postList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const postList = getPostList("life", ["title", "date", "slug", "excerpt"]);
+  const postList = getPostList("life", ["title", "date", "slug", "leading"]);
 
   return {
     props: { postList },

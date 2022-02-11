@@ -1,6 +1,5 @@
 ---
 title: "Monthly Reports(2021/11)"
-excerpt: "11 月の振り返り。仕事でガッツリ開発してました。"
 date: "2021-11"
 ---
 

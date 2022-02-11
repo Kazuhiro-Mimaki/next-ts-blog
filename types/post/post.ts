@@ -3,16 +3,8 @@ type PostType = {
   title: string;
   date: string;
   thumbnail: string;
-  excerpt: string;
-  ogImage: {
-    url: string;
-  };
+  leading: string;
   content: string;
-  coverImage: string;
-  author: {
-    name: string;
-    picture: string;
-  };
 };
 
 export default PostType;

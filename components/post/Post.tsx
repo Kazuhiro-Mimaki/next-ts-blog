@@ -9,13 +9,10 @@ type Props = {
 const Post = ({ post }: Props) => {
   return (
     <div className={styles.container}>
-      <time className={`${styles.info} ${styles.left}`}>{post.date}</time>
-      <div className={`${styles.info} ${styles.right}`}>
-        <Link href={`/posts/${post.slug}`}>
-          <h3 className={styles.title}>{post.title}</h3>
-        </Link>
-        <p className={styles.excerpt}>{post.excerpt}</p>
-      </div>
+      <Link href={`/posts/${post.slug}`}>
+        <h3 className={styles.title}>{post.title}</h3>
+      </Link>
+      <p className={styles.leading}>{post.leading}...</p>
     </div>
   );
 };

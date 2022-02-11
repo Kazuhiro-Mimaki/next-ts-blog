@@ -1,6 +1,5 @@
 ---
 title: "Monthly Reports(2021/12)"
-excerpt: "12 月の振り返り。今年ラスト〜。"
 date: "2021-12"
 ---
 

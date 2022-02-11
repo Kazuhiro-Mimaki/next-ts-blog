@@ -1,6 +1,5 @@
 ---
 title: "Monthly Reports(2021/01)"
-excerpt: "昨年から毎月のログを残すようにしているのですが、これ結構いい。また、@ryoKawamata  さんの『じぶん Release Notes』を見て良いなと思ったので、今年からは note にまとめていこうと思います。"
 date: "2021-01"
 ---
 

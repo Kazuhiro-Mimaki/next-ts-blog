@@ -9,6 +9,10 @@ export const getSlug = (fullPath: string) => {
   return realSlug;
 };
 
+export const getLeading = (content: string) => {
+  return content.substring(0, 150);
+};
+
 export const getPost = (slug: string, fields: string[] = []) => {
   const fileContents = fs.readFileSync(slug, "utf-8");
   const { data, content } = matter(fileContents);
@@ -19,6 +23,9 @@ export const getPost = (slug: string, fields: string[] = []) => {
   fields.forEach((field) => {
     if (field === "slug") {
       items[field] = getSlug(slug);
+    }
+    if (field === "leading") {
+      items[field] = getLeading(content);
     }
     if (field === "content") {
       items[field] = content;
