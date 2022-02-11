@@ -17,7 +17,7 @@ const TechPost = ({ head, postList }: Props) => {
 
       <section className={styles.articles}>
         {postList.map((post, index) => (
-          <PostCardComponent head={head} post={post} index={index} />
+          <PostCardComponent head={head} post={post} key={index} />
         ))}
       </section>
     </div>

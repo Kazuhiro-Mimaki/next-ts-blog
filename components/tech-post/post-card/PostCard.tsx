@@ -5,12 +5,11 @@ import { LogoComponent, LinkButtonComponent } from "../../componentProvider";
 type Props = {
   head: string;
   post: FeedItem;
-  index: number;
 };
 
-const PostCard = ({ head, post, index }: Props) => {
+const PostCard = ({ head, post }: Props) => {
   return (
-    <div className={styles.article} key={index}>
+    <div className={styles.article}>
       <a href={post.link} target="_blank" rel="noopener noreferrer">
         <h3 className={`${styles.title} ${styles[head]}`}>{post.title}</h3>
       </a>
