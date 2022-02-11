@@ -1,8 +1,6 @@
 ---
 title: Nuxt.js + Rails APIをDocker上で立ち上げCRUD操作してみる
-tags: Rails nuxt.js Docker crud
-author: Kazuhiro_Mimaki
-slide: false
+date: "2020-12-15"
 ---
 
 今回初めて Nuxt.js を触りました。
@@ -34,7 +32,7 @@ Docker for mac はインストール済みとする。
 
 `server-side/` 配下に dockerfile を作成。
 
-```Dockerfile:Dockerfile
+```yml:Dockerfile
 FROM ruby:2.7.0
 
 RUN apt-get update -qq && \
@@ -67,7 +65,7 @@ Gemfile.lock は空のままで大丈夫。
 
 rails と postgres の設定を docker-compose.yml に書いていきます。
 
-```docker-compose.yml
+```yml:docker-compose.yml
 version: '3.8'
 
 volumes:
@@ -111,7 +109,7 @@ $ docker-compose run server-side rails new . --api --force --database=postgresql
 
 以下のようになっていると思うので
 
-```database.yml
+```yml:database.yml
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -122,7 +120,7 @@ default: &default
 
 以下のように編集。
 
-```database.yml
+```yml:database.yml
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -138,7 +136,7 @@ default: &default
 
 この設定をすることで, Nuxt から server-side にアクセスできます。
 
-```server-side/config/environments/development.rb
+```ruby:server-side/config/environments/development.rb
 config.hosts << "server-side"
 ```
 
@@ -265,7 +263,7 @@ $ npx create-nuxt-app client-side
 
 色々質問されると思うのですが, 今回は以下のように設定しました。(その他はデフォルト)
 
-```:terminal
+```terminal
 ? Project name: client-side
 ? Programming language: TypeScript
 ? Package manager: Yarn
@@ -287,7 +285,7 @@ $ npx create-nuxt-app client-side
 
 `client-side/` 配下に Dockerfile を作成。
 
-```Dockerfile:Dockerfile
+```yml:Dockerfile:Dockerfile
 FROM node:14.15.1
 
 WORKDIR /client-app
@@ -303,7 +301,7 @@ CMD ["yarn", "dev"]
 
 `server-side` の設定を記述した docker-compose.yml に `client-side` の設定を追加します。
 
-```docker-compose.yml
+```yml:docker-compose.yml
 version: '3.8'
 
 volumes:
@@ -348,7 +346,7 @@ services:
 
 このままだとエラーが出るので, port と host を以下のように設定します。
 
-```nuxt.config.js
+```js:nuxt.config.js
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -389,7 +387,7 @@ README の記述を参考に `@nuxtjs/proxy` をインストールし, `app/nuxt
 $ yarn add @nuxtjs/proxy
 ```
 
-```app/nuxt.config.js
+```js:app/nuxt.config.js
 modules: [
   '@nuxtjs/axios',
   '@nuxtjs/proxy'
@@ -413,7 +411,7 @@ proxy: {
 $ yarn add @nuxtjs/composition-api
 ```
 
-```client-side/nuxt.config.js
+```js:client-side/nuxt.config.js
 modules: [
   '@nuxtjs/proxy',
   //追加
@@ -422,7 +420,7 @@ modules: [
 ],
 ```
 
-```client-side/tsconfig.json
+```json:client-side/tsconfig.json
 "types": [
   "@types/node",
   "@nuxt/types",
@@ -435,7 +433,7 @@ modules: [
 
 `client-side` に新たに `models/todo.ts` ディレクトリを作り, 以下を記述。
 
-```todo.ts
+```ts:todo.ts
 export interface ITodo {
   id: number;
   title: string;
@@ -449,7 +447,7 @@ export interface ITodo {
 
 `client-side/pages/index.vue` に以下の内容を記述。
 
-```client-side/pages/index.vue
+```ts:client-side/pages/index.vue
 <script lang="ts">
 import {
   defineComponent,
