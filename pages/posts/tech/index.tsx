@@ -1,6 +1,6 @@
 import styles from "./tech.module.css";
-import zennPostList from "../../../_tech/_zenn/posts.json";
-import qiitaPostList from "../../../_tech/_qiita/posts.json";
+import zennPostList from "../../../_posts/feed/zenn/posts.json";
+import qiitaPostList from "../../../_posts/feed/qiita/posts.json";
 import { TechPostComponent } from "../../../components/componentProvider";
 import { FeedItem } from "../../../types/feed-item/feedItem";
 
