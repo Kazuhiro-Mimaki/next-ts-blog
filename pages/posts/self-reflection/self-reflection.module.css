@@ -2,8 +2,17 @@
   margin: 2rem 0 4rem;
 }
 
-.title {
+.section-title {
   margin-bottom: 3rem;
+}
+
+.title {
+  margin: 0;
+}
+
+.memo {
+  margin: 0;
+  color: #777;
 }
 
 .main {
