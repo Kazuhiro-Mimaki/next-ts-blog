@@ -9,11 +9,13 @@ import {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <HeaderComponent />
-      <LayoutComponent>
-        <Component {...pageProps} />
-      </LayoutComponent>
-      <FooterComponent />
+      <div className="wrap">
+        <HeaderComponent />
+        <LayoutComponent>
+          <Component {...pageProps} />
+        </LayoutComponent>
+        <FooterComponent />
+      </div>
     </>
   );
 }

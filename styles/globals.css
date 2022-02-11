@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.wrap {
+  overflow: hidden;
+}
+
 h3,
 h4 {
   margin: 0;
