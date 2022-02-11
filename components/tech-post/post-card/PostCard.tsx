@@ -1,4 +1,4 @@
-import { FeedItem } from "../../../lib/rssParser";
+import { FeedItem } from "../../../types/feed-item/feedItem";
 import styles from "./PostCard.module.css";
 import { LogoComponent, LinkButtonComponent } from "../../componentProvider";
 
@@ -8,7 +8,7 @@ type Props = {
   index: number;
 };
 
-const TechPost = ({ head, post, index }: Props) => {
+const PostCard = ({ head, post, index }: Props) => {
   return (
     <div className={styles.article} key={index}>
       <a href={post.link} target="_blank" rel="noopener noreferrer">
@@ -22,4 +22,4 @@ const TechPost = ({ head, post, index }: Props) => {
   );
 };
 
-export default TechPost;
+export default PostCard;

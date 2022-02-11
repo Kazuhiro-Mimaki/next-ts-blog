@@ -1,11 +1,8 @@
 import styles from "./tech.module.css";
 import zennPostList from "../../../_tech/_zenn/posts.json";
 import qiitaPostList from "../../../_tech/_qiita/posts.json";
-import {
-  LayoutComponent,
-  TechPostComponent,
-} from "../../../components/componentProvider";
-import { FeedItem } from "../../../lib/rssParser";
+import { TechPostComponent } from "../../../components/componentProvider";
+import { FeedItem } from "../../../types/feed-item/feedItem";
 
 type Props = {
   zennPostList: FeedItem[];

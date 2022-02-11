@@ -1,4 +1,4 @@
-import { FeedItem } from "../../lib/rssParser";
+import { FeedItem } from "../../types/feed-item/feedItem";
 import styles from "./TechPost.module.css";
 import { LogoComponent, PostCardComponent } from "../componentProvider";
 
