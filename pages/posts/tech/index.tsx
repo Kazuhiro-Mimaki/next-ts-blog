@@ -1,17 +1,13 @@
 import styles from "./tech.module.css";
-import { TechPostComponent } from "../../../components/componentProvider";
-import zennPostList from "../../../_posts/feed/zenn/posts.json";
-import qiitaPostList from "../../../_posts/feed/qiita/posts.json";
-import { FeedItem } from "../../../types/feed-item/feedItem";
-import { shuffle } from "../../../lib/helper";
+import { PostComponent } from "../../../components/componentProvider";
+import Post from "../../../types/post/post";
+import { getPostList } from "../../../lib/parseMarkdown";
 
 type Props = {
-  postList: FeedItem[];
+  postList: Post[];
 };
 
 const Index = ({ postList }: Props) => {
-  const shuffledPostList = shuffle([...postList]);
-
   return (
     <div className={styles.container}>
       <div className={styles["section-title"]}>
@@ -19,8 +15,8 @@ const Index = ({ postList }: Props) => {
         <p className={styles.memo}>技術関連</p>
       </div>
       <main className={styles.main}>
-        {shuffledPostList.map((post, index) => (
-          <TechPostComponent post={post} key={index} />
+        {postList.map((post, index) => (
+          <PostComponent post={post} key={index} />
         ))}
       </main>
     </div>
@@ -28,7 +24,8 @@ const Index = ({ postList }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const postList = [...zennPostList, ...qiitaPostList];
+  const postList = getPostList("/tech", ["title", "date", "slug", "leading"]);
+
   return {
     props: { postList },
   };
