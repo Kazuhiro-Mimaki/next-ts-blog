@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { getAllPosts, getPostBySlug } from "../../lib/parseAllPost";
 import Head from "next/head";
 import PostType from "../../types/post/post";
-import { PostBodyComponent } from "../../components/componentProvider";
+import { MarkdownComponent } from "../../components/componentProvider";
 import styles from "./slug.module.css";
 
 type Props = {
@@ -27,7 +27,7 @@ const Post = ({ post }: Props) => {
             </Head>
 
             <h1 className={styles.title}>{post.title}</h1>
-            <PostBodyComponent content={post.content} />
+            <MarkdownComponent content={post.content} />
           </article>
         </>
       )}

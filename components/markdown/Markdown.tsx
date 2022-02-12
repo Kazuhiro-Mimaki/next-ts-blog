@@ -1,4 +1,4 @@
-import styles from "./PostBody.module.css";
+import styles from "./Markdown.module.css";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -7,7 +7,7 @@ type Props = {
   content: string;
 };
 
-const PostBody = ({ content }: Props) => {
+const Markdown = ({ content }: Props) => {
   return (
     <ReactMarkdown
       className={styles.container}
@@ -34,4 +34,4 @@ const PostBody = ({ content }: Props) => {
   );
 };
 
-export default PostBody;
+export default Markdown;
