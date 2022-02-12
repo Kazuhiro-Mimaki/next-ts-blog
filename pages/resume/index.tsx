@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./resume.module.css";
 import { DefinitionItemComponent } from "../../components/componentProvider";
-import { basicInfoList } from "../../constants/basic-info";
+import { basicInfoList, skills } from "../../constants/constantProvider";
 
 const Resume = () => {
   return (
@@ -10,7 +10,7 @@ const Resume = () => {
         <h2 className={styles.title}>RESUME</h2>
         <p className={styles.memo}>基本情報・経歴など</p>
       </div>
-      <div className={styles["basic-info"]}>
+      <section className={styles["basic-info"]}>
         <div className={styles.left}>
           <Image src={`/icon.png`} alt="Icon" width={300} height={300} />
         </div>
@@ -25,8 +25,7 @@ const Resume = () => {
             );
           })}
         </div>
-      </div>
-      <main className={styles.main}></main>
+      </section>
     </div>
   );
 };
