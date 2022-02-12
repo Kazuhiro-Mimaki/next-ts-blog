@@ -6,6 +6,7 @@ import LinkButtonComponent from "./button/link-button/LinkButton";
 import LayoutComponent from "./layout/Layout";
 import MarkdownComponent from "./markdown/Markdown";
 import PageComponent from "./layout/page/Page";
+import DefinitionItemComponent from "./item/Item";
 
 export {
   HeaderComponent,
@@ -16,4 +17,5 @@ export {
   LayoutComponent,
   MarkdownComponent,
   PageComponent,
+  DefinitionItemComponent,
 };

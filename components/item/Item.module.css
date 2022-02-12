@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  border-bottom: solid 1px #ddd;
+  margin-bottom: 1.2rem;
+}
+
+.term {
+  width: 20%;
+  font-weight: bold;
+}

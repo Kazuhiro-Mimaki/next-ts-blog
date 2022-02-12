@@ -18,6 +18,9 @@ const HeaderComponent = () => {
         <Link href="/posts/self-reflection">
           <a className={styles.item}>Reflection</a>
         </Link>
+        <Link href="/resume">
+          <a className={styles.item}>Resume</a>
+        </Link>
         <Link href="https://github.com/Kazuhiro-Mimaki">
           <a className={styles.item} target="_blank" rel="noopener noreferrer">
             GitHub
