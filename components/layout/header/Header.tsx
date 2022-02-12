@@ -5,7 +5,7 @@ const HeaderComponent = () => {
   return (
     <header className={styles.header}>
       <Link href="/">
-        <a className={`${styles.item} ${styles.title}`}>Kazuhiro Mimaki</a>
+        <a className={`${styles.item} ${styles.title}`}>Home</a>
       </Link>
 
       <nav className={styles.nav}>
@@ -16,7 +16,7 @@ const HeaderComponent = () => {
           <a className={styles.item}>Life</a>
         </Link>
         <Link href="/posts/self-reflection">
-          <a className={styles.item}>Self-Reflection</a>
+          <a className={styles.item}>Reflection</a>
         </Link>
         <Link href="https://github.com/Kazuhiro-Mimaki">
           <a className={styles.item} target="_blank" rel="noopener noreferrer">

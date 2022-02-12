@@ -8,12 +8,12 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   return (
-    <div className={styles.container}>
-      <Link href={`/posts/${post.slug}`}>
+    <Link href={`/posts/${post.slug}`}>
+      <a className={styles.container}>
         <h3 className={styles.title}>{post.title}</h3>
-      </Link>
-      <p className={styles.leading}>{post.leading}...</p>
-    </div>
+        <p className={styles.leading}>{post.leading}...</p>
+      </a>
+    </Link>
   );
 };
 
