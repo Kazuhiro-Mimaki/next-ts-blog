@@ -19,7 +19,8 @@ const Index = ({ postList }: Props) => {
       </Head>
 
       <div className={styles["section-title"]}>
-        <h2 className={styles.title}>記事一覧</h2>
+        <h2 className={styles.title}>ALL</h2>
+        <p className={styles.memo}>記事一覧</p>
       </div>
 
       <main className={styles.main}>
