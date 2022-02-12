@@ -5,6 +5,7 @@ import LogoComponent from "./logo/Logo";
 import LinkButtonComponent from "./button/link-button/LinkButton";
 import LayoutComponent from "./layout/Layout";
 import PostBodyComponent from "./post-body/PostBody";
+import PageComponent from "./layout/page/Page";
 
 export {
   HeaderComponent,
@@ -14,4 +15,5 @@ export {
   LinkButtonComponent,
   LayoutComponent,
   PostBodyComponent,
+  PageComponent,
 };
