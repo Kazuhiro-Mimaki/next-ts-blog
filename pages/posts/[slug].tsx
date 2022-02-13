@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { getAllPosts, getPostBySlug } from "../../lib/parseAllPost";
-import Head from "next/head";
 import PostType from "../../types/post/post";
 import { MarkdownComponent } from "../../components/componentProvider";
 import styles from "./slug.module.css";
