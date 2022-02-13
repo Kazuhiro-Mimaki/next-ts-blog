@@ -3,8 +3,13 @@
   width: 100%;
 }
 
-.section-title {
+.page-title {
   margin-bottom: 3rem;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+  border-bottom: solid 1px #ddd;
 }
 
 .title {
@@ -21,22 +26,17 @@
   margin: 0 auto;
 }
 
-.basic-info {
-  display: flex;
-  align-items: center;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-}
-
-.right {
-  width: 60%;
+.section {
+  margin-bottom: 5rem;
 }
 
 .skills {
-  padding-left: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.skills li {
+  margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 480px) {

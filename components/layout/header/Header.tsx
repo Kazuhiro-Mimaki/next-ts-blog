@@ -5,10 +5,13 @@ const HeaderComponent = () => {
   return (
     <header className={styles.header}>
       <Link href="/">
-        <a className={`${styles.item} ${styles.title}`}>Home</a>
+        <a className={styles.title}>b1essk.com</a>
       </Link>
 
       <nav className={styles.nav}>
+        <Link href="/">
+          <a className={styles.item}>All</a>
+        </Link>
         <Link href="/posts/tech">
           <a className={styles.item}>Tech</a>
         </Link>
