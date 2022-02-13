@@ -22,10 +22,6 @@ const Post = ({ post }: Props) => {
       ) : (
         <>
           <article className={styles.container}>
-            <Head>
-              <title>{post.title} | Next.js Blog Example</title>
-            </Head>
-
             <h1 className={styles.title}>{post.title}</h1>
             <MarkdownComponent content={post.content} />
           </article>
