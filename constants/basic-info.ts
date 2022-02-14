@@ -15,8 +15,4 @@ export const basicInfoList = [
     term: "Address",
     description: "Kyoto -> Tokyo",
   },
-  {
-    term: "Email",
-    description: "godblessu0405@gmail.com",
-  },
 ];

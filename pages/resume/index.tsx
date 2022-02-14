@@ -38,6 +38,7 @@ const Resume = () => {
               key={index}
               term={link.term}
               description={link.description}
+              link={link.description}
             />
           );
         })}

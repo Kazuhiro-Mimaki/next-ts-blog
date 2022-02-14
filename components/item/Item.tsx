@@ -3,13 +3,20 @@ import styles from "./Item.module.css";
 type Props = {
   term: string;
   description: string;
+  link?: string;
 };
 
-const DefinitionItem = ({ term, description }: Props) => {
+const DefinitionItem = ({ term, description, link }: Props) => {
   return (
     <dl className={styles.container}>
       <dt className={styles.term}>{term}</dt>
-      <dd>{description}</dd>
+      {link ? (
+        <a className={styles.link} href={link}>
+          <dd>{description}</dd>
+        </a>
+      ) : (
+        <dd>{description}</dd>
+      )}
     </dl>
   );
 };
