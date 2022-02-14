@@ -7,5 +7,5 @@ export const skills = [
   "Git, GitHub",
   "MySQL",
   "Docker",
-  "AWS (EC2, S3, CloudFront, ELB, Lambda, ECS, API Gateway)",
+  "AWS (EC2, S3, CloudFront, API Gateway, ELB, ECS, Lambda, RDS)",
 ];

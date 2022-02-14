@@ -1,12 +1,19 @@
 import Image from "next/image";
 
 type Props = {
-  head: string;
+  name: string;
+  width: number;
+  height: number;
 };
 
-const Logo = ({ head }: Props) => {
+const Logo = ({ name, width, height }: Props) => {
   return (
-    <Image src={`/${head}.svg`} alt={`${head} Logo`} width={20} height={20} />
+    <Image
+      src={`/${name}.svg`}
+      alt={`${name} Logo`}
+      width={width}
+      height={height}
+    />
   );
 };
 

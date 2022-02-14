@@ -1,7 +1,5 @@
 .container {
   display: flex;
-  border-bottom: solid 1px #ddd;
-  margin-bottom: 1.2rem;
 }
 
 .term {

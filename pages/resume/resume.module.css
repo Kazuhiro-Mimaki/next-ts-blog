@@ -31,13 +31,15 @@
   margin-bottom: 5rem;
 }
 
-.skills {
+.skills,
+.experiences {
   padding: 0;
   list-style: none;
 }
 
-.skills li {
-  margin-bottom: 0.5rem;
+.skills li,
+.experiences li {
+  margin-bottom: 1em;
 }
 
 @media screen and (max-width: 480px) {
