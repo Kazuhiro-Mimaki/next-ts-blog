@@ -11,7 +11,12 @@ const DefinitionItem = ({ term, description, link }: Props) => {
     <dl className={styles.container}>
       <dt className={styles.term}>{term}</dt>
       {link ? (
-        <a className={styles.link} href={link}>
+        <a
+          className={styles.link}
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <dd>{description}</dd>
         </a>
       ) : (
