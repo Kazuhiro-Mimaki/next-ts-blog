@@ -39,7 +39,9 @@ export const getPost = (slug: string, fields: string[] = []) => {
 
 export const getPostList = (targetDirectory: string, fields: string[] = []) => {
   const postsDirectory = join(process.cwd(), `_posts${targetDirectory}`);
-  const files = glob.sync(`${postsDirectory}/**/*.md`);
+  const files = glob.sync(`${postsDirectory}/**/*.md`, {
+    ignore: `${postsDirectory}/self-reflection/**/*.md`,
+  });
   const posts = [...files]
     .map((file) => getPost(file, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
