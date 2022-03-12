@@ -14,7 +14,7 @@ export class FeedItem {
   public isoDate: string;
   public dateMiliSeconds: number;
 
-  constructor(_feedItem: FeedItem) {
+  constructor(_feedItem: IFeedItem) {
     this.title = _feedItem.title;
     this.link = _feedItem.link;
     this.isoDate = _feedItem.isoDate;
@@ -25,6 +25,7 @@ export class FeedItem {
 const TECH_URL_HASH_MAP = {
   zenn: "https://zenn.dev/b1essk/feed",
   qiita: "https://qiita.com/Kazuhiro_Mimaki/feed",
+  note: "https://note.com/b1essk/rss",
 };
 
 async function getFeedPostList(url: string) {
@@ -67,4 +68,11 @@ function sortItemList(feedItemList: IFeedItem[]) {
   const zennPostList = await getFeedPostList(TECH_URL_HASH_MAP["zenn"]);
   fs.ensureDirSync("_tech/_zenn");
   fs.writeJsonSync("_tech/_zenn/posts.json", zennPostList);
+})();
+
+// Get note post list
+(async function () {
+  const notePostList = await getFeedPostList(TECH_URL_HASH_MAP["note"]);
+  fs.ensureDirSync("_tech/_note");
+  fs.writeJsonSync("_tech/_note/posts.json", notePostList);
 })();
