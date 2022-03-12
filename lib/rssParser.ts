@@ -56,14 +56,6 @@ function sortItemList(feedItemList: IFeedItem[]) {
   );
 }
 
-// Filter note post list
-function filterIsReflection(feedItemList: IFeedItem[]) {
-  const itemList = feedItemList;
-  return itemList.sort(
-    (a, b: IFeedItem) => b.dateMiliSeconds - a.dateMiliSeconds
-  );
-}
-
 // Get qiita post list
 (async function () {
   const qiitaPostList = await getFeedPostList(TECH_URL_HASH_MAP["qiita"]);

@@ -1,28 +1,30 @@
+import Head from "next/head";
+import { PageComponent } from "../components/componentProvider";
 import Post from "../types/post/post";
-import notePosts from "../_tech/_note/posts.json";
-import style from "../styles/index.module.css";
+import { getPostList } from "../lib/parseMarkdown";
 
-const Index = () => {
+type Props = {
+  postList: Post[];
+};
+
+const Index = ({ postList }: Props) => {
   return (
     <>
-      <div className={style.container}>
-        <h1 className={style.title}>Home</h1>
-        <div className={style.main}>
-          {filterdPostList(notePosts).map((note, index) => {
-            return (
-              <a className={style.card} href={note.link} key={index}>
-                {note.title}
-              </a>
-            );
-          })}
-        </div>
-      </div>
+      <PageComponent
+        postList={postList}
+        sectionTitle="ALL"
+        sectionMemo="記事一覧"
+      />
     </>
   );
 };
 
-const filterdPostList = (postList: Post[]) => {
-  return postList.filter((post) => !post.title.includes("Monthly"));
+export const getStaticProps = async () => {
+  const postList = getPostList("", ["title", "date", "slug", "leading"]);
+
+  return {
+    props: { postList },
+  };
 };
 
 export default Index;
