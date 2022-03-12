@@ -8,6 +8,7 @@ body {
 
 .wrap {
   overflow: hidden;
+  background: linear-gradient(90deg, #edc0bf 0, #c4caef 58%);
 }
 
 h3,

@@ -1,10 +1,8 @@
 type PostType = {
-  slug: string;
   title: string;
-  date: string;
-  thumbnail: string;
-  leading: string;
-  content: string;
+  link: string;
+  isoDate: string;
+  dateMiliSeconds: number;
 };
 
 export default PostType;

@@ -17,11 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <div className="wrap">
-        <HeaderComponent />
-        <LayoutComponent>
-          <Component {...pageProps} />
-        </LayoutComponent>
-        <FooterComponent />
+        <Component {...pageProps} />
       </div>
     </>
   );
