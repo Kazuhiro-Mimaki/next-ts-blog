@@ -13,12 +13,12 @@ const HeaderComponent = () => {
           <a className={styles.item}>All</a>
         </Link>
         <Link href="/note">
-          <a className={styles.item}>Note</a>
-        </Link>
-        <Link href="/posts/life">
           <a className={styles.item}>Life</a>
         </Link>
-        <Link href="/posts/self-reflection">
+        <Link href="/tech">
+          <a className={styles.item}>Tech</a>
+        </Link>
+        <Link href="/reflection">
           <a className={styles.item}>Reflection</a>
         </Link>
         <Link href="/resume">
