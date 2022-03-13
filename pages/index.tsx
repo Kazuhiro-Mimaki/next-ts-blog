@@ -1,30 +1,46 @@
-import Head from "next/head";
-import { PageComponent } from "../components/componentProvider";
 import Post from "../types/post/post";
-import { getPostList } from "../lib/parseMarkdown";
+import notePosts from "../_tech/_note/posts.json";
+import style from "../styles/index.module.css";
 
-type Props = {
-  postList: Post[];
-};
-
-const Index = ({ postList }: Props) => {
+const Index = () => {
   return (
     <>
-      <PageComponent
-        postList={postList}
-        sectionTitle="ALL"
-        sectionMemo="記事一覧"
-      />
+      <div className={style.container}>
+        <div className={style["section-title"]}>
+          <h2 className={style.title}>All</h2>
+          <p className={style.memo}>全ての記事</p>
+        </div>
+        <div className={style.main}>
+          {filterdPostList(notePosts).map((note, index) => {
+            return (
+              <a
+                className={style.card}
+                href={note.link}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={style.icon}>
+                  <img
+                    src="http://www.google.com/s2/favicons?domain=note.com"
+                    alt="note"
+                    width={14}
+                    height={14}
+                  />
+                  note.com
+                </div>
+                <p className={style["post-title"]}>{note.title}</p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 };
 
-export const getStaticProps = async () => {
-  const postList = getPostList("", ["title", "date", "slug", "leading"]);
-
-  return {
-    props: { postList },
-  };
+const filterdPostList = (postList: Post[]) => {
+  return postList.filter((post) => !post.title.includes("Monthly"));
 };
 
 export default Index;

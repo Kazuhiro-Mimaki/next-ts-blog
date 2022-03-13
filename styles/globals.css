@@ -7,7 +7,8 @@ body {
 }
 
 .wrap {
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* background: #202233; */
 }
 
 h3,
