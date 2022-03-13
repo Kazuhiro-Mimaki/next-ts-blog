@@ -50,7 +50,7 @@ async function getFeedPostList(url: string) {
 
 // Sort post list
 function sortItemList(feedItemList: IFeedItem[]) {
-  const itemList = feedItemList;
+  const itemList = [...feedItemList];
   return itemList.sort(
     (a, b: IFeedItem) => b.dateMiliSeconds - a.dateMiliSeconds
   );

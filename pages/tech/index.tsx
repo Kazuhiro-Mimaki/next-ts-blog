@@ -4,6 +4,7 @@ import style from "../../styles/index.module.css";
 
 const Index = () => {
   const techPostList = [...zennPosts, ...qiitaPosts];
+  techPostList.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
 
   return (
     <>

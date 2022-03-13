@@ -1,8 +1,17 @@
 import Post from "../types/post/post";
 import notePosts from "../_tech/_note/posts.json";
+import zennPosts from "../_tech/_zenn/posts.json";
+import qiitaPosts from "../_tech/_qiita/posts.json";
 import style from "../styles/index.module.css";
 
 const Index = () => {
+  const techPostList = [
+    ...filterdPostList(notePosts),
+    ...zennPosts,
+    ...qiitaPosts,
+  ];
+  techPostList.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
+
   return (
     <>
       <div className={style.container}>
@@ -11,25 +20,27 @@ const Index = () => {
           <p className={style.memo}>全ての記事</p>
         </div>
         <div className={style.main}>
-          {filterdPostList(notePosts).map((note, index) => {
+          {techPostList.map((post, index) => {
             return (
               <a
                 className={style.card}
-                href={note.link}
+                href={post.link}
                 key={index}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <div className={style.icon}>
                   <img
-                    src="http://www.google.com/s2/favicons?domain=note.com"
+                    src={`http://www.google.com/s2/favicons?domain=${techLink(
+                      post.link
+                    )}`}
                     alt="note"
                     width={14}
                     height={14}
                   />
-                  note.com
+                  {techLink(post.link)}
                 </div>
-                <p className={style["post-title"]}>{note.title}</p>
+                <p className={style["post-title"]}>{post.title}</p>
               </a>
             );
           })}
@@ -41,6 +52,19 @@ const Index = () => {
 
 const filterdPostList = (postList: Post[]) => {
   return postList.filter((post) => !post.title.includes("Monthly"));
+};
+
+const techLink = (link: string) => {
+  switch (true) {
+    case link.includes("note"):
+      return "note.com";
+    case link.includes("zenn"):
+      return "zenn.dev";
+    case link.includes("qiita"):
+      return "qiita.com";
+    default:
+      return "no link";
+  }
 };
 
 export default Index;
