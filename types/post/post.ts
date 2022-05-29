@@ -3,6 +3,7 @@ type PostType = {
   link: string;
   isoDate: string;
   dateMiliSeconds: number;
+  summary: string;
 };
 
 export default PostType;

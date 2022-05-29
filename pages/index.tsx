@@ -3,6 +3,7 @@ import notePosts from "../_tech/_note/posts.json";
 import zennPosts from "../_tech/_zenn/posts.json";
 import qiitaPosts from "../_tech/_qiita/posts.json";
 import style from "../styles/index.module.css";
+import { NavHeadComponent } from "../components/componentProvider";
 
 const Index = () => {
   const techPostList = [
@@ -16,8 +17,7 @@ const Index = () => {
     <>
       <div className={style.container}>
         <div className={style["section-title"]}>
-          <h2 className={style.title}>All</h2>
-          <p className={style.memo}>全ての記事</p>
+          <NavHeadComponent title="All" sub="全ての記事" />
         </div>
         <div className={style.main}>
           {techPostList.map((post, index) => {
@@ -40,7 +40,8 @@ const Index = () => {
                   />
                   {techLink(post.link)}
                 </div>
-                <p className={style["post-title"]}>{post.title}</p>
+                <h3>{post.title}</h3>
+                <p>{post.summary}</p>
               </a>
             );
           })}

@@ -1,35 +1,24 @@
 .container {
-  max-width: 840px;
   margin: 2rem auto 4rem;
 }
 
 .section-title {
-  margin-bottom: 3rem;
-}
-
-.title {
-  margin: 0;
-}
-
-.memo {
-  margin: 0;
-  color: #777;
+  margin-bottom: 2rem;
 }
 
 .main {
   display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2em;
 }
 
-.post-title {
-  position: relative;
-}
-
 .card:hover {
   background: #eee;
+}
+
+.post_title {
+  font-size: 1.2rem;
 }
 
 .icon {
@@ -37,6 +26,7 @@
   align-items: center;
   font-size: 12px;
   color: #777;
+  margin-bottom: 0.5rem;
 }
 
 .icon img {
@@ -52,8 +42,7 @@
 
 @media screen and (min-width: 769px) {
   .card {
-    padding: 0.5rem;
-    border: solid 1px #ccc;
-    border-radius: 4px;
+    /* padding: 0.5rem;
+    border-radius: 4px; */
   }
 }

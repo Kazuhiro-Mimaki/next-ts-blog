@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/icon.png" />
       </Head>
 
-      <div className="wrap">
+      <div>
         <HeaderComponent />
         <LayoutComponent>
           <Component {...pageProps} />
