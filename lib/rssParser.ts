@@ -6,6 +6,7 @@ export interface IFeedItem {
   link: string;
   isoDate: string;
   dateMiliSeconds: number;
+  summary: string;
 }
 
 export class FeedItem {
@@ -13,12 +14,14 @@ export class FeedItem {
   public link: string;
   public isoDate: string;
   public dateMiliSeconds: number;
+  public summary: string;
 
   constructor(_feedItem: IFeedItem) {
     this.title = _feedItem.title;
     this.link = _feedItem.link;
     this.isoDate = _feedItem.isoDate;
     this.dateMiliSeconds = _feedItem.dateMiliSeconds;
+    this.summary = _feedItem.summary;
   }
 }
 
@@ -33,14 +36,16 @@ async function getFeedPostList(url: string) {
   const parser = new Parser();
   const feed = await parser.parseURL(url);
   if (feed?.items.length === 0) return [];
-  feed.items.map(({ title, link, isoDate }) => {
+  feed.items.map(({ title, link, isoDate, contentSnippet }) => {
     const dateMiliSeconds = isoDate ? new Date(isoDate).getTime() : 0;
+    const summary = contentSnippet?.substring(0, 200) || "";
     if (title && link && isoDate) {
       const post = new FeedItem({
         title,
         link,
         isoDate,
         dateMiliSeconds,
+        summary,
       });
       postList.push(post);
     }
