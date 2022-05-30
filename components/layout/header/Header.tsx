@@ -12,7 +12,7 @@ const HeaderComponent = () => {
         <Link href="/">
           <a className={styles.item}>All</a>
         </Link>
-        <Link href="/note">
+        <Link href="/note/1">
           <a className={styles.item}>Life</a>
         </Link>
         <Link href="/tech">

@@ -5,6 +5,7 @@ import LayoutComponent from "./layout/Layout";
 import MarkdownComponent from "./markdown/Markdown";
 import DefinitionItemComponent from "./item/Item";
 import NavHeadComponent from "./nav-head/NavHead";
+import PaginationComponent from "./pagination/Pagination";
 
 export {
   HeaderComponent,
@@ -14,4 +15,5 @@ export {
   MarkdownComponent,
   DefinitionItemComponent,
   NavHeadComponent,
+  PaginationComponent,
 };

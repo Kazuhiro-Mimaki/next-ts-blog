@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.paginate-btn {
+  padding: 8px;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.paginate-btn:hover {
+  color: #fff;
+  background: #000;
+}
+
+.next {
+  margin-left: 1rem;
+}

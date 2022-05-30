@@ -1,6 +1,10 @@
 import style from "../../styles/index.module.css";
 import axios, { AxiosResponse } from "axios";
-import { NavHeadComponent } from "../../components/componentProvider";
+import {
+  NavHeadComponent,
+  PaginationComponent,
+} from "../../components/componentProvider";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 type NotePost = {
   id: string;
@@ -8,13 +12,16 @@ type NotePost = {
   body: string;
   hashtags: string[];
   noteUrl: string;
+  likeCount: number;
 };
 
 type Props = {
+  currentPageId: number;
+  maxPageId: number;
   contents: NotePost[];
 };
 
-const Index = ({ contents }: Props) => {
+const NotePage = ({ currentPageId, maxPageId, contents }: Props) => {
   return (
     <>
       <div className={style.container}>
@@ -46,6 +53,10 @@ const Index = ({ contents }: Props) => {
             );
           })}
         </div>
+        <PaginationComponent
+          currentPageId={currentPageId}
+          maxPageId={maxPageId}
+        />
       </div>
     </>
   );
@@ -59,17 +70,45 @@ type TResponse = {
   };
 };
 
-export async function getStaticProps() {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const DEFAULT_PAGE_ID = 1;
+  const PER_PAGE = 6;
+
   const res: AxiosResponse<TResponse> = await axios.get(
-    "https://note.com/api/v2/creators/b1essk/contents?kind=note&page=1"
+    `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${DEFAULT_PAGE_ID}`
   );
-  const { contents, isLastPage, totalCount } = res.data.data;
+  const { totalCount } = res.data.data;
+
+  const maxPageId = Math.ceil(totalCount / PER_PAGE);
+  const paths: string[] = [];
+
+  for (let i = 0; i <= maxPageId; i++) {
+    paths.push(`/note/${i}`);
+  }
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (
+  ctx
+): Promise<{ props: Props }> => {
+  const DEFAULT_PAGE_ID = 1;
+  const PER_PAGE = 6;
+  const currentPageId = Number(ctx.params?.id) || DEFAULT_PAGE_ID;
+
+  const res: AxiosResponse<TResponse> = await axios.get(
+    `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${currentPageId}`
+  );
+  const { contents, totalCount } = res.data.data;
+
+  const maxPageId = Math.ceil(totalCount / PER_PAGE);
 
   return {
     props: {
+      currentPageId,
+      maxPageId,
       contents,
     },
   };
-}
+};
 
-export default Index;
+export default NotePage;
