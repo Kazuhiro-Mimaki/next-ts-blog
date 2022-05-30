@@ -1,5 +1,5 @@
 import Post from "../../types/post/post";
-import notePosts from "../../_tech/_note/posts.json";
+import zennPosts from "../../_tech/_zenn/posts.json";
 import style from "./reflection.module.css";
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
           <p className={style.memo}>月次振り返り</p>
         </div>
         <div className={style.main}>
-          {filterdPostList(notePosts).map((post, index) => {
+          {filterdPostList(zennPosts).map((post, index) => {
             return (
               <a
                 className={style.card}

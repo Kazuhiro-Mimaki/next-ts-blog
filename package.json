@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "gray-matter": "^4.0.3",
     "next": ">=12.1.0",
     "react": "17.0.2",
@@ -26,11 +27,11 @@
     "eslint-config-next": "12.0.9",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
+    "prismjs": ">=1.27.0",
     "react-markdown": "^8.0.0",
     "react-syntax-highlighter": "^15.4.5",
     "rss-parser": "^3.12.0",
     "ts-node": "^10.4.0",
-    "typescript": "4.5.5",
-    "prismjs": ">=1.27.0"
+    "typescript": "4.5.5"
   }
 }

@@ -1,21 +1,32 @@
-import Post from "../../types/post/post";
-import notePosts from "../../_tech/_note/posts.json";
 import style from "../../styles/index.module.css";
+import axios, { AxiosResponse } from "axios";
+import { NavHeadComponent } from "../../components/componentProvider";
 
-const Index = () => {
+type NotePost = {
+  id: string;
+  name: string;
+  body: string;
+  hashtags: string[];
+  noteUrl: string;
+};
+
+type Props = {
+  contents: NotePost[];
+};
+
+const Index = ({ contents }: Props) => {
   return (
     <>
       <div className={style.container}>
         <div className={style["section-title"]}>
-          <h2 className={style.title}>Note</h2>
-          <p className={style.memo}>日々のメモとか気づきとか</p>
+          <NavHeadComponent title="Note" sub="日々のメモとか気づきとか" />
         </div>
         <div className={style.main}>
-          {filterdPostList(notePosts).map((note, index) => {
+          {contents.map((content, index) => {
             return (
               <a
                 className={style.card}
-                href={note.link}
+                href={content.noteUrl}
                 key={index}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -29,7 +40,8 @@ const Index = () => {
                   />
                   note.com
                 </div>
-                <p className={style["post-title"]}>{note.title}</p>
+                <p className={style["post-title"]}>{content.name}</p>
+                <p>{content.body}</p>
               </a>
             );
           })}
@@ -39,8 +51,25 @@ const Index = () => {
   );
 };
 
-const filterdPostList = (postList: Post[]) => {
-  return postList.filter((post) => !post.title.includes("Monthly"));
+type TResponse = {
+  data: {
+    contents: NotePost[];
+    isLastPage: boolean;
+    totalCount: number;
+  };
 };
+
+export async function getStaticProps() {
+  const res: AxiosResponse<TResponse> = await axios.get(
+    "https://note.com/api/v2/creators/b1essk/contents?kind=note&page=1"
+  );
+  const { contents, isLastPage, totalCount } = res.data.data;
+
+  return {
+    props: {
+      contents,
+    },
+  };
+}
 
 export default Index;
