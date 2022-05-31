@@ -1,9 +1,16 @@
 import zennPosts from "../../_tech/_zenn/posts.json";
 import qiitaPosts from "../../_tech/_qiita/posts.json";
 import style from "../../styles/index.module.css";
+import { GetStaticProps } from "next";
+import axios, { AxiosResponse } from "axios";
 
-const Index = () => {
-  const techPostList = [...zennPosts, ...qiitaPosts];
+type Props = {
+  posts: any[];
+};
+
+const TechPage = ({ posts }: Props) => {
+  console.log(posts);
+  const techPostList = [...qiitaPosts];
   techPostList.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
 
   return (
@@ -25,14 +32,12 @@ const Index = () => {
               >
                 <div className={style.icon}>
                   <img
-                    src={`http://www.google.com/s2/favicons?domain=${techLink(
-                      post.link
-                    )}`}
+                    src={`http://www.google.com/s2/favicons?domain=${post.link}`}
                     alt="post"
                     width={14}
                     height={14}
                   />
-                  {techLink(post.link)}
+                  {post.link}
                 </div>
                 <p className={style["post-title"]}>{post.title}</p>
               </a>
@@ -44,15 +49,21 @@ const Index = () => {
   );
 };
 
-const techLink = (link: string) => {
-  switch (true) {
-    case link.includes("zenn"):
-      return "zenn.dev";
-    case link.includes("qiita"):
-      return "qiita.com";
-    default:
-      return "no link";
-  }
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props;
+}> => {
+  const res: AxiosResponse<any> = await axios.get("https://api/v2/items", {
+    headers: {
+      Authorization: `Bearer ${process.env.QIITA_API_TOKEN}`,
+    },
+  });
+  const { posts } = res.data;
+
+  return {
+    props: {
+      posts,
+    },
+  };
 };
 
-export default Index;
+export default TechPage;
