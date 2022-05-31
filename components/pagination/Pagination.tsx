@@ -15,7 +15,9 @@ const Pagination = ({ maxPageId, currentPageId }: Props) => {
     <div className={style.container}>
       {currentPageId !== DEFAULT_PAGE_ID && (
         <Link href={`/note/${prevPageId}`}>
-          <a className={style["paginate-btn"]}>&lt; Previous</a>
+          <a className={`${style["paginate-btn"]} ${style.prev}`}>
+            &lt; Previous
+          </a>
         </Link>
       )}
       {currentPageId !== maxPageId && (

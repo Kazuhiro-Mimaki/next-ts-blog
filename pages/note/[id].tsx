@@ -1,19 +1,12 @@
 import style from "../../styles/index.module.css";
 import axios, { AxiosResponse } from "axios";
 import {
+  IconComponent,
   NavHeadComponent,
   PaginationComponent,
 } from "../../components/componentProvider";
 import { GetStaticPaths, GetStaticProps } from "next";
-
-type NotePost = {
-  id: string;
-  name: string;
-  body: string;
-  hashtags: string[];
-  noteUrl: string;
-  likeCount: number;
-};
+import { NotePost } from "../../models/notePost";
 
 type Props = {
   currentPageId: number;
@@ -25,34 +18,26 @@ const NotePage = ({ currentPageId, maxPageId, contents }: Props) => {
   return (
     <>
       <div className={style.container}>
-        <div className={style["section-title"]}>
+        <div className={style["nav-head"]}>
           <NavHeadComponent title="Note" sub="日々のメモとか気づきとか" />
         </div>
-        <div className={style.main}>
-          {contents.map((content, index) => {
-            return (
-              <a
-                className={style.card}
-                href={content.noteUrl}
-                key={index}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className={style.icon}>
-                  <img
-                    src="http://www.google.com/s2/favicons?domain=note.com"
-                    alt="note"
-                    width={14}
-                    height={14}
-                  />
-                  note.com
-                </div>
-                <p className={style["post-title"]}>{content.name}</p>
-                <p>{content.body}</p>
-              </a>
-            );
-          })}
-        </div>
+
+        {contents.map((content, index) => {
+          return (
+            <a
+              className={style.post}
+              href={content.noteUrl}
+              key={index}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconComponent name="note.com" />
+              <p className={style["post-title"]}>{content.name}</p>
+              <p>{content.body}...</p>
+            </a>
+          );
+        })}
+
         <PaginationComponent
           currentPageId={currentPageId}
           maxPageId={maxPageId}
@@ -85,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   for (let i = 0; i <= maxPageId; i++) {
     paths.push(`/note/${i}`);
   }
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async (
