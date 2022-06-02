@@ -7,6 +7,7 @@ import {
   IconComponent,
   NavHeadComponent,
 } from "../../components/componentProvider";
+import { VFC } from "react";
 
 type Props = {
   posts: QiitaPost[];
@@ -22,7 +23,7 @@ const excludePrivate = (posts: QiitaPost[]): QiitaPost[] => {
   return posts.filter((post) => !post.private);
 };
 
-const TechPage = ({ posts }: Props) => {
+const TechPage: VFC<Props> = ({ posts }) => {
   const publicPosts = excludePrivate(posts);
 
   return (

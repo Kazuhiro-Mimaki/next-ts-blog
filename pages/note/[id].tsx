@@ -7,6 +7,7 @@ import {
 } from "../../components/componentProvider";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NotePost } from "../../models/notePost";
+import { VFC } from "react";
 
 type Props = {
   currentPageId: number;
@@ -14,7 +15,7 @@ type Props = {
   contents: NotePost[];
 };
 
-const NotePage = ({ currentPageId, maxPageId, contents }: Props) => {
+const NotePage: VFC<Props> = ({ currentPageId, maxPageId, contents }) => {
   return (
     <>
       <div className={style.container}>
