@@ -1,10 +1,9 @@
 import zennPosts from "../_tech/_zenn/posts.json";
-import qiitaPosts from "../_tech/_qiita/posts.json";
 import style from "../styles/index.module.css";
 import { NavHeadComponent } from "../components/componentProvider";
 
 const Index = () => {
-  const techPostList = [...zennPosts, ...qiitaPosts];
+  const techPostList = [...zennPosts];
   techPostList.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
 
   return (

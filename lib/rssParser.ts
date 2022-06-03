@@ -27,14 +27,13 @@ export class FeedItem {
 
 const TECH_URL_HASH_MAP = {
   zenn: "https://zenn.dev/b1essk/feed",
-  qiita: "https://qiita.com/Kazuhiro_Mimaki/feed",
-  note: "https://note.com/b1essk/rss",
 };
 
 async function getFeedPostList(url: string) {
   const postList: IFeedItem[] = [];
   const parser = new Parser();
   const feed = await parser.parseURL(url);
+  console.log(feed);
   if (feed?.items.length === 0) return [];
   feed.items.map(({ title, link, isoDate, contentSnippet }) => {
     const dateMiliSeconds = isoDate ? new Date(isoDate).getTime() : 0;
@@ -61,23 +60,9 @@ function sortItemList(feedItemList: IFeedItem[]) {
   );
 }
 
-// Get qiita post list
-(async function () {
-  const qiitaPostList = await getFeedPostList(TECH_URL_HASH_MAP["qiita"]);
-  fs.ensureDirSync("_tech/_qiita");
-  fs.writeJsonSync("_tech/_qiita/posts.json", qiitaPostList);
-})();
-
 // Get zenn post list
 (async function () {
   const zennPostList = await getFeedPostList(TECH_URL_HASH_MAP["zenn"]);
   fs.ensureDirSync("_tech/_zenn");
   fs.writeJsonSync("_tech/_zenn/posts.json", zennPostList);
-})();
-
-// Get note post list
-(async function () {
-  const notePostList = await getFeedPostList(TECH_URL_HASH_MAP["note"]);
-  fs.ensureDirSync("_tech/_note");
-  fs.writeJsonSync("_tech/_note/posts.json", notePostList);
 })();

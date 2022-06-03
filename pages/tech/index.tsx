@@ -7,6 +7,7 @@ import {
   IconComponent,
   NavHeadComponent,
 } from "../../components/componentProvider";
+import { ZennPost } from "../../models/zennPost";
 
 type Props = {
   posts: QiitaPost[];
