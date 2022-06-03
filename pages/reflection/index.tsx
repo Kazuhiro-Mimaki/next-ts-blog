@@ -1,37 +1,74 @@
-import Post from "../../types/post/post";
-import zennPosts from "../../_tech/_zenn/posts.json";
+import axios, { AxiosResponse } from "axios";
+import { GetStaticProps } from "next";
+import { VFC } from "react";
+import { NavHeadComponent } from "../../components/componentProvider";
+import { NotePost } from "../../models/notePost";
 import style from "./reflection.module.css";
 
-const Index = () => {
+type Props = {
+  monthlyReports: NotePost[];
+};
+
+const ReflectionPage: VFC<Props> = ({ monthlyReports }) => {
   return (
     <>
       <div className={style.container}>
         <div className={style["section-title"]}>
-          <h2 className={style.title}>Reflection</h2>
-          <p className={style.memo}>月次振り返り</p>
+          <NavHeadComponent title="Reflection" sub="月次振り返り" />
         </div>
-        <div className={style.main}>
-          {filterdPostList(zennPosts).map((post, index) => {
-            return (
-              <a
-                className={style.card}
-                href={post.link}
-                key={index}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <p className={style["post-title"]}>{post.title}</p>
-              </a>
-            );
-          })}
-        </div>
+
+        {monthlyReports.map((post, index) => {
+          return (
+            <a
+              className={style.card}
+              href={post.noteUrl}
+              key={index}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className={style["post-title"]}>{post.name}</p>
+            </a>
+          );
+        })}
       </div>
     </>
   );
 };
 
-const filterdPostList = (postList: Post[]) => {
-  return postList.filter((post) => post.title.includes("Monthly"));
+type TResponse = {
+  data: {
+    contents: NotePost[];
+    isLastPage: boolean;
+    totalCount: number;
+  };
 };
 
-export default Index;
+export const getStaticProps: GetStaticProps = async (): Promise<any> => {
+  const PREFIX = "Monthly Reports";
+  const monthlyReports: NotePost[] = [];
+  let pageId = 1;
+
+  while (true) {
+    const res: AxiosResponse<TResponse> = await axios.get(
+      `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${pageId}`
+    );
+    const { contents, isLastPage } = res.data.data;
+    contents.map((content) => {
+      if (content.name.includes(PREFIX)) {
+        monthlyReports.push(content);
+      }
+    });
+    if (isLastPage) {
+      break;
+    }
+    pageId++;
+  }
+
+  return {
+    props: {
+      monthlyReports,
+    },
+  };
+};
+
+export default ReflectionPage;
