@@ -9,15 +9,36 @@ import {
   ZennSectionComponent,
 } from "../../components/componentProvider";
 import { ZennPost } from "../../models/zennPost";
-import { VFC } from "react";
+import { useState, VFC } from "react";
 
 type Props = {
   qiitaApiPosts: IQiitaAPIPost[];
   zennPosts: ZennPost[];
 };
 
+enum TAB {
+  Qiita,
+  Zenn,
+}
+
 const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
   const qiitaPosts = qiitaApiPosts.map((post) => new QiitaPost(post));
+
+  const [openTab, setOpenTab] = useState(TAB.Qiita);
+
+  const tabs = [
+    { service: "Qiita", type: TAB.Qiita },
+    { service: "Zenn", type: TAB.Zenn },
+  ];
+
+  const contents = (tab: TAB) => {
+    switch (tab) {
+      case TAB.Qiita:
+        return <QiitaSectionComponent posts={qiitaPosts} />;
+      case TAB.Zenn:
+        return <ZennSectionComponent posts={zennPosts} />;
+    }
+  };
 
   return (
     <>
@@ -26,8 +47,17 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
           <NavHeadComponent title="Tech" sub="技術関連" />
         </div>
 
-        <QiitaSectionComponent posts={qiitaPosts} />
-        <ZennSectionComponent posts={zennPosts} />
+        {/* タブ */}
+        <div>
+          {tabs.map((tab) => {
+            return (
+              <div onClick={() => setOpenTab(tab.type)}>{tab.service}</div>
+            );
+          })}
+        </div>
+
+        {/* タブに応じて内容を切り替え */}
+        <div>{contents(openTab)}</div>
       </div>
     </>
   );
