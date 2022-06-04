@@ -1,0 +1,13 @@
+.post {
+  display: inline-block;
+  padding: 1rem;
+  transition: box-shadow 0.1s;
+}
+
+.post:hover {
+  box-shadow: 0px 0px 8px 3px #ddd;
+}
+
+.post-title {
+  font-size: 1.2rem;
+}
