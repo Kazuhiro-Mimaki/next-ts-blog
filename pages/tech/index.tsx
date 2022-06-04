@@ -1,4 +1,4 @@
-import zennFeeds from "../../_tech/_zenn/posts.json";
+import zennPosts from "../../_tech/_zenn/posts.json";
 import style from "../../styles/index.module.css";
 import { GetStaticProps } from "next";
 import axios, { AxiosResponse } from "axios";
@@ -6,6 +6,7 @@ import { IQiitaAPIPost, QiitaPost } from "../../models/qiitaPost";
 import {
   NavHeadComponent,
   QiitaSectionComponent,
+  ZennSectionComponent,
 } from "../../components/componentProvider";
 import { ZennPost } from "../../models/zennPost";
 import { VFC } from "react";
@@ -17,6 +18,7 @@ type Props = {
 
 const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
   const qiitaPosts = qiitaApiPosts.map((post) => new QiitaPost(post));
+
   return (
     <>
       <div className={style.container}>
@@ -25,9 +27,7 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
         </div>
 
         <QiitaSectionComponent posts={qiitaPosts} />
-        {zennPosts.map((post, index) => {
-          return <div key={index}>{post.title}</div>;
-        })}
+        <ZennSectionComponent posts={zennPosts} />
       </div>
     </>
   );
@@ -47,7 +47,6 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
     }
   );
   const qiitaApiPosts = res.data;
-  const zennPosts = [...zennFeeds];
 
   return {
     props: {

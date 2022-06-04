@@ -8,6 +8,7 @@ import NavHeadComponent from "./nav-head/NavHead";
 import PaginationComponent from "./pagination/Pagination";
 import IconComponent from "./icon/Icon";
 import QiitaSectionComponent from "./tech/qiita/QiitaSection";
+import ZennSectionComponent from "./tech/zenn/ZennSection";
 
 export {
   HeaderComponent,
@@ -20,4 +21,5 @@ export {
   PaginationComponent,
   IconComponent,
   QiitaSectionComponent,
+  ZennSectionComponent,
 };

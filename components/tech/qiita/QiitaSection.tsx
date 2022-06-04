@@ -8,7 +8,6 @@ type Props = {
 };
 
 const QiitaSection: VFC<Props> = ({ posts }) => {
-  console.log(posts);
   return (
     <>
       {posts.map((post, index) => {
