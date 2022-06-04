@@ -6,16 +6,22 @@ import {
   PaginationComponent,
 } from "../../components/componentProvider";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { NotePost } from "../../models/notePost";
+import {
+  INoteAPIPost,
+  INoteAPIResponse,
+  NotePost,
+} from "../../models/notePost";
 import { VFC } from "react";
 
 type Props = {
   currentPageId: number;
   maxPageId: number;
-  contents: NotePost[];
+  contents: INoteAPIPost[];
 };
 
 const NotePage: VFC<Props> = ({ currentPageId, maxPageId, contents }) => {
+  const notePosts = contents.map((content) => new NotePost(content));
+  console.log(notePosts);
   return (
     <>
       <div className={style.container}>
@@ -23,7 +29,7 @@ const NotePage: VFC<Props> = ({ currentPageId, maxPageId, contents }) => {
           <NavHeadComponent title="Note" sub="日々のメモとか気づきとか" />
         </div>
 
-        {contents.map((content, index) => {
+        {notePosts.map((content, index) => {
           return (
             <a
               className={style.post}
@@ -48,19 +54,11 @@ const NotePage: VFC<Props> = ({ currentPageId, maxPageId, contents }) => {
   );
 };
 
-type TResponse = {
-  data: {
-    contents: NotePost[];
-    isLastPage: boolean;
-    totalCount: number;
-  };
-};
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const DEFAULT_PAGE_ID = 1;
   const PER_PAGE = 6;
 
-  const res: AxiosResponse<TResponse> = await axios.get(
+  const res: AxiosResponse<INoteAPIResponse> = await axios.get(
     `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${DEFAULT_PAGE_ID}`
   );
   const { totalCount } = res.data.data;
@@ -81,7 +79,7 @@ export const getStaticProps: GetStaticProps = async (
   const PER_PAGE = 6;
   const currentPageId = Number(ctx.params?.id) || DEFAULT_PAGE_ID;
 
-  const res: AxiosResponse<TResponse> = await axios.get(
+  const res: AxiosResponse<INoteAPIResponse> = await axios.get(
     `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${currentPageId}`
   );
   const { contents, totalCount } = res.data.data;
