@@ -1,3 +1,7 @@
+// ====================
+// Class
+// ====================
+
 export class NotePost {
   id: number;
   name: string;
@@ -18,7 +22,13 @@ export class NotePost {
   }
 }
 
+// ====================
+// Interface
+// ====================
+
+// ====================
 // Note API のレスポンス型
+// ====================
 
 export interface INoteAPIResponse {
   data: {
@@ -37,6 +47,10 @@ export interface INoteAPIPost {
   likeCount: number;
   publishAt: Date;
 }
+
+// ====================
+// Type
+// ====================
 
 export type HashTag = {
   name: string;

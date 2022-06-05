@@ -5,28 +5,9 @@ const TECH_URL_HASH_MAP = {
   zenn: "https://zenn.dev/b1essk/feed",
 };
 
+// Zenn feed の型
 // 他のモジュールで型指定をimportしようとするとエラーになる
-export class ZennPost {
-  title: string;
-  link: string;
-  isoDate: string;
-  dateMiliSeconds: number;
-  content: string;
-  summary: string;
-
-  constructor(_zennPost: IZennFeedPost) {
-    this.title = _zennPost.title;
-    this.link = _zennPost.link;
-    this.isoDate = _zennPost.isoDate;
-    this.dateMiliSeconds = _zennPost.dateMiliSeconds;
-    this.content = _zennPost.content;
-    this.summary = _zennPost.content.substring(0, 200);
-  }
-}
-
-// Zenn RSS の型
-
-export interface IZennFeedPost {
+interface IZennFeedPost {
   title: string;
   link: string;
   isoDate: string;
@@ -35,21 +16,22 @@ export interface IZennFeedPost {
 }
 
 async function getZennFeeds(url: string) {
-  const postList: ZennPost[] = [];
+  const postList: IZennFeedPost[] = [];
+
   const parser = new Parser();
   const feed = await parser.parseURL(url);
-
   if (feed?.items.length === 0) return [];
+
   feed.items.map(({ title, link, isoDate, content }) => {
-    const dateMiliSeconds = isoDate ? new Date(isoDate).getTime() : 0;
+    const dateMiliSeconds = convertDateFormat(isoDate ?? "");
     if (title && link && isoDate && content) {
-      const post = new ZennPost({
-        title,
-        link,
-        isoDate,
-        dateMiliSeconds,
-        content,
-      });
+      const post: IZennFeedPost = {
+        title: title,
+        link: link,
+        isoDate: isoDate,
+        dateMiliSeconds: dateMiliSeconds,
+        content: content,
+      };
       postList.push(post);
     }
   });
@@ -58,11 +40,16 @@ async function getZennFeeds(url: string) {
 }
 
 // Sort post list
-function sortByDate(zennPosts: ZennPost[]) {
+function sortByDate(zennPosts: IZennFeedPost[]) {
   return [...zennPosts].sort(
-    (a, b: ZennPost) => b.dateMiliSeconds - a.dateMiliSeconds
+    (a, b: IZennFeedPost) => b.dateMiliSeconds - a.dateMiliSeconds
   );
 }
+
+// Convert date format
+const convertDateFormat = (isoDate: string): number => {
+  return new Date(isoDate).getTime();
+};
 
 // Get zenn post list -> write in json file
 (async function () {

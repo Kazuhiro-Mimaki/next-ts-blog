@@ -21,7 +21,7 @@ type Props = {
 
 const NotePage: VFC<Props> = ({ currentPageId, maxPageId, contents }) => {
   const notePosts = contents.map((content) => new NotePost(content));
-  console.log(notePosts);
+
   return (
     <>
       <div className={style.container}>

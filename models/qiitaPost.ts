@@ -1,3 +1,7 @@
+// ====================
+// Class
+// ====================
+
 export class QiitaPost {
   id: string;
   title: string;
@@ -11,13 +15,10 @@ export class QiitaPost {
   createdAt: Date;
 
   constructor(_post: IQiitaAPIPost) {
-    const START_INDEX = 0;
-    const END_INDEX = 300;
-
     this.id = _post.id;
     this.title = _post.title;
     this.body = _post.body;
-    this.summary = _post.body.substring(START_INDEX, END_INDEX);
+    this.summary = this.getSummary(this.body);
     this.tags = _post.tags;
     this.url = _post.url;
     this.private = _post.private;
@@ -25,9 +26,23 @@ export class QiitaPost {
     this.pageViews = _post.page_views_count;
     this.createdAt = _post.created_at;
   }
+
+  private getSummary(fullContents: QiitaPost["body"]) {
+    const SUMMARY_RANGE = {
+      START: 0,
+      END: 200,
+    };
+    return fullContents.substring(SUMMARY_RANGE.START, SUMMARY_RANGE.END);
+  }
 }
 
+// ====================
+// Interface
+// ====================
+
+// ====================
 // Qiita API のレスポンス型
+// ====================
 
 export interface IQiitaAPIPost {
   id: string;

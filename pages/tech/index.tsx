@@ -1,4 +1,4 @@
-import zennPosts from "../../_tech/_zenn/posts.json";
+import zennFeedPosts from "../../_tech/_zenn/posts.json";
 import style from "../../styles/index.module.css";
 import { GetStaticProps } from "next";
 import axios, { AxiosResponse } from "axios";
@@ -8,21 +8,34 @@ import {
   QiitaSectionComponent,
   ZennSectionComponent,
 } from "../../components/componentProvider";
-import { ZennPost } from "../../models/zennPost";
+import { IZennFeedPost, ZennPost } from "../../models/zennPost";
 import { useState, VFC } from "react";
+
+// ====================
+// Props
+// ====================
 
 type Props = {
   qiitaApiPosts: IQiitaAPIPost[];
-  zennPosts: ZennPost[];
+  zennFeedPosts: IZennFeedPost[];
 };
+
+// ====================
+// Enum
+// ====================
 
 enum TAB {
   Qiita,
   Zenn,
 }
 
-const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
+// ====================
+// Page
+// ====================
+
+const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
   const qiitaPosts = qiitaApiPosts.map((post) => new QiitaPost(post));
+  const zennPosts = zennFeedPosts.map((post) => new ZennPost(post));
 
   const [openTab, setOpenTab] = useState(TAB.Qiita);
 
@@ -63,6 +76,10 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennPosts }) => {
   );
 };
 
+// ====================
+// getStaticProps
+// ====================
+
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
@@ -81,9 +98,13 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   return {
     props: {
       qiitaApiPosts,
-      zennPosts,
+      zennFeedPosts,
     },
   };
 };
+
+// ====================
+// export
+// ====================
 
 export default TechPage;
