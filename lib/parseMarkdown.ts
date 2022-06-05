@@ -3,13 +3,15 @@ import { join } from "path";
 import matter from "gray-matter";
 import glob from "glob";
 
-export const getSlug = (fullPath: string) => {
+const postsDirectory = join(process.cwd(), "_posts");
+
+export const getSlug = (fullPath: string): string => {
   const slugList = fullPath.split("/");
-  const realSlug = slugList[slugList.length - 1].replace(/\.md$/, "");
-  return realSlug;
+  const slug = slugList[slugList.length - 1].replace(/\.md$/, "");
+  return slug;
 };
 
-export const getLeading = (content: string) => {
+export const getLeading = (content: string): string => {
   return content.substring(0, 150);
 };
 
@@ -37,13 +39,30 @@ export const getPost = (slug: string, fields: string[] = []) => {
   return items;
 };
 
-export const getPostList = (targetDirectory: string, fields: string[] = []) => {
-  const postsDirectory = join(process.cwd(), `_posts${targetDirectory}`);
-  const files = glob.sync(`${postsDirectory}/**/*.md`, {
-    ignore: `${postsDirectory}/self-reflection/**/*.md`,
+type Item = {
+  slug: string | null;
+  title: string | null;
+};
+
+export const getReflectionPosts = (fields: string[] = []) => {
+  const fullPathList = glob.sync(`${postsDirectory}/reflection/**/*.md`);
+  const items: Item[] = [];
+  fullPathList.map(async (fullPath) => {
+    const slug = getSlug(fullPath);
+    const fileContents = await fs.readFileSync(slug, "utf-8");
+    const { content } = matter(fileContents);
+
+    const item: Item = { slug: null, title: null };
+    fields.forEach((field) => {
+      if (field === "slug") {
+        item[field] = slug;
+      }
+      if (field === "title") {
+        item[field] = getLeading(content);
+      }
+    });
+    items.push(item);
   });
-  const posts = [...files]
-    .map((file) => getPost(file, fields))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+
+  return items;
 };

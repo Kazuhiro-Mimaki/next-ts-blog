@@ -12,7 +12,7 @@ export const getSlug = (fullPath: string) => {
 };
 
 export function getAllPosts() {
-  const fullPathList = glob.sync(`${postsDirectory}/**/*.md`);
+  const fullPathList = glob.sync(`${postsDirectory}/reflection/**/*.md`);
   return fullPathList.map((fullPath) => getSlug(fullPath));
 }
 
@@ -30,7 +30,7 @@ export function getPostBySlug(realSlug: string, fields: string[] = []) {
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = realSlug;
+      items[field] = `reflection/${realSlug}`;
     }
     if (field === "content") {
       items[field] = content;

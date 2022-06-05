@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async (
 ): Promise<{ props: Props }> => {
   const DEFAULT_PAGE_ID = 1;
   const PER_PAGE = 6;
-  const currentPageId = Number(ctx.params?.id) || DEFAULT_PAGE_ID;
+  const currentPageId = Number(ctx.params?.pageId) || DEFAULT_PAGE_ID;
 
   const res: AxiosResponse<INoteAPIResponse> = await axios.get(
     `https://note.com/api/v2/creators/b1essk/contents?kind=note&page=${currentPageId}`
