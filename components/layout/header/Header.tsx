@@ -13,7 +13,7 @@ const HeaderComponent = () => {
           <a className={styles.item}>All</a>
         </Link>
         <Link href="/note/1">
-          <a className={styles.item}>Life</a>
+          <a className={styles.item}>Note</a>
         </Link>
         <Link href="/tech">
           <a className={styles.item}>Tech</a>

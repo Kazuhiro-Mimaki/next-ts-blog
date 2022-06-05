@@ -62,9 +62,11 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
 
         {/* タブ */}
         <div>
-          {tabs.map((tab) => {
+          {tabs.map((tab, index) => {
             return (
-              <div onClick={() => setOpenTab(tab.type)}>{tab.service}</div>
+              <div key={index} onClick={() => setOpenTab(tab.type)}>
+                {tab.service}
+              </div>
             );
           })}
         </div>
