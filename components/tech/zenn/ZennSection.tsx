@@ -1,4 +1,5 @@
 import { VFC } from "react";
+import { formatDate } from "../../../lib/utils";
 import { ZennPost } from "../../../models/zennPost";
 import { IconComponent } from "../../componentProvider";
 import style from "./ZennSection.module.css";
@@ -9,7 +10,7 @@ type Props = {
 
 const ZennSection: VFC<Props> = ({ posts }) => {
   return (
-    <>
+    <div className={style.posts}>
       {posts.map((post, index) => {
         return (
           <a
@@ -21,11 +22,11 @@ const ZennSection: VFC<Props> = ({ posts }) => {
           >
             <IconComponent name="zenn.dev" />
             <p className={style["post-title"]}>{post.title}</p>
-            <p>{post.summary}...</p>
+            {/* {formatDate(post.isoDate)} */}
           </a>
         );
       })}
-    </>
+    </div>
   );
 };
 

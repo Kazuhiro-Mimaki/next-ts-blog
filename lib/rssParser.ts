@@ -8,12 +8,12 @@ const TECH_URL_HASH_MAP = {
 
 // Feed post の型
 // 他のモジュールで型指定をimportしようとするとエラーになる
-interface IFeedPost {
+export interface IFeedPost {
   title: string;
   link: string;
+  content: string;
   isoDate: string;
   dateMiliSeconds: number;
-  content: string;
 }
 
 async function getFeedPosts(url: string) {
@@ -30,9 +30,9 @@ async function getFeedPosts(url: string) {
       const post: IFeedPost = {
         title: title,
         link: link,
+        content: content,
         isoDate: isoDate,
         dateMiliSeconds: dateMiliSeconds,
-        content: content,
       };
       postList.push(post);
     }

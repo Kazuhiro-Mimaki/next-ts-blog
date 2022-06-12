@@ -9,7 +9,7 @@ type Props = {
 
 const QiitaSection: VFC<Props> = ({ posts }) => {
   return (
-    <>
+    <div className={style.posts}>
       {posts.map((post, index) => {
         return (
           !post.private && (
@@ -22,12 +22,11 @@ const QiitaSection: VFC<Props> = ({ posts }) => {
             >
               <IconComponent name="qiita.com" />
               <p className={style["post-title"]}>{post.title}</p>
-              <p>{post.summary}...</p>
             </a>
           )
         );
       })}
-    </>
+    </div>
   );
 };
 
