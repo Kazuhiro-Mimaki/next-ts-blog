@@ -7,8 +7,15 @@ import {
 import { getAllPosts, getPostBySlug } from "../../../lib/parseAllPost";
 import style from "../reflection.module.css";
 
+type Post = {
+  title: string;
+  date: string;
+  slug: string;
+  content: string;
+};
+
 type Props = {
-  post: any;
+  post: Post;
 };
 
 const ReflectionPage: VFC<Props> = ({ post }) => {
