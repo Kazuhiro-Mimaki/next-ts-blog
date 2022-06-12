@@ -1,0 +1,50 @@
+.container {
+  margin: 2rem auto 4rem;
+}
+
+.nav-head {
+  margin-bottom: 2rem;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.post {
+  padding: 1rem;
+  border-radius: 4px;
+  border: solid 1px #e5e8ed;
+  transition: box-shadow 0.1s;
+}
+
+.post:hover {
+  box-shadow: 0px 0px 8px 1px #ddd;
+}
+
+.post-title {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    border-bottom: solid 1px #ccc;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .card {
+    /* padding: 0.5rem;
+    border-radius: 4px; */
+  }
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin: 0.5rem 0;
+}

@@ -49,6 +49,18 @@ export interface INoteAPIPost {
 }
 
 // ====================
+// Note Feed のレスポンス型
+// ====================
+
+export interface INoteFeedPost {
+  title: string;
+  link: string;
+  isoDate: string;
+  dateMiliSeconds: number;
+  content: string;
+}
+
+// ====================
 // Type
 // ====================
 

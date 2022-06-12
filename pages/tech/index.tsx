@@ -1,4 +1,4 @@
-import zennFeedPosts from "../../_tech/_zenn/posts.json";
+import zennFeedPosts from "../../_feed/_zenn/posts.json";
 import style from "../../styles/index.module.css";
 import { GetStaticProps } from "next";
 import axios, { AxiosResponse } from "axios";

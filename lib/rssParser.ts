@@ -3,11 +3,12 @@ import fs from "fs-extra";
 
 const TECH_URL_HASH_MAP = {
   zenn: "https://zenn.dev/b1essk/feed",
+  note: "https://note.com/b1essk/rss",
 };
 
-// Zenn feed の型
+// Feed post の型
 // 他のモジュールで型指定をimportしようとするとエラーになる
-interface IZennFeedPost {
+interface IFeedPost {
   title: string;
   link: string;
   isoDate: string;
@@ -15,17 +16,18 @@ interface IZennFeedPost {
   content: string;
 }
 
-async function getZennFeeds(url: string) {
-  const postList: IZennFeedPost[] = [];
+async function getFeedPosts(url: string) {
+  const postList: IFeedPost[] = [];
 
   const parser = new Parser();
   const feed = await parser.parseURL(url);
+  console.log(feed.items);
   if (feed?.items.length === 0) return [];
 
   feed.items.map(({ title, link, isoDate, content }) => {
     const dateMiliSeconds = convertDateFormat(isoDate ?? "");
     if (title && link && isoDate && content) {
-      const post: IZennFeedPost = {
+      const post: IFeedPost = {
         title: title,
         link: link,
         isoDate: isoDate,
@@ -40,9 +42,9 @@ async function getZennFeeds(url: string) {
 }
 
 // Sort post list
-function sortByDate(zennPosts: IZennFeedPost[]) {
-  return [...zennPosts].sort(
-    (a, b: IZennFeedPost) => b.dateMiliSeconds - a.dateMiliSeconds
+function sortByDate(feedPosts: IFeedPost[]) {
+  return [...feedPosts].sort(
+    (a, b: IFeedPost) => b.dateMiliSeconds - a.dateMiliSeconds
   );
 }
 
@@ -53,7 +55,14 @@ const convertDateFormat = (isoDate: string): number => {
 
 // Get zenn post list -> write in json file
 (async function () {
-  const zennPostList = await getZennFeeds(TECH_URL_HASH_MAP["zenn"]);
-  fs.ensureDirSync("_tech/_zenn");
-  fs.writeJsonSync("_tech/_zenn/posts.json", zennPostList);
+  const zennPostList = await getFeedPosts(TECH_URL_HASH_MAP["zenn"]);
+  fs.ensureDirSync("_feed/_zenn");
+  fs.writeJsonSync("_feed/_zenn/posts.json", zennPostList);
+})();
+
+// Get note post list -> write in json file
+(async function () {
+  const notePostList = await getFeedPosts(TECH_URL_HASH_MAP["note"]);
+  fs.ensureDirSync("_feed/_note");
+  fs.writeJsonSync("_feed/_note/posts.json", notePostList);
 })();
