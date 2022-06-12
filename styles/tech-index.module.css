@@ -16,9 +16,11 @@
 .tab {
   font-size: 1.2rem;
   cursor: pointer;
+  color: #999;
 }
 
 .current-tab {
+  color: #000;
   border-bottom: solid 4px #4172b5;
 }
 

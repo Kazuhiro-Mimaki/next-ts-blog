@@ -7,26 +7,21 @@
   margin-bottom: 3rem;
 }
 
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.post {
+  margin-bottom: 1rem;
+}
+
 .title {
-  margin: 0;
-}
-
-.memo {
-  margin: 0;
-  color: #777;
-}
-
-.main {
-  border-left: solid 1px #ddd;
-  padding-left: 3rem;
-}
-
-.post-title {
   position: relative;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
 }
 
-.post-title::after {
+.title::after {
   content: "";
   display: block;
   position: absolute;
@@ -38,30 +33,10 @@
   background-color: #4caf93;
 }
 
-.post-title:hover::after {
+.title:hover::after {
   width: 50px;
   animation-name: fadeIn;
   animation-duration: 0.5s;
-}
-
-.card {
-  border-radius: 4px;
-}
-
-.card:hover {
-  background: #eee;
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  color: #777;
-}
-
-.icon img {
-  border-radius: 4px;
-  margin-right: 2px;
 }
 
 @keyframes fadeIn {

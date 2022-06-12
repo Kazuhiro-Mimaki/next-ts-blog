@@ -4,8 +4,15 @@ import { NavHeadComponent } from "../../components/componentProvider";
 import { getAllPosts, getPostBySlug } from "../../lib/parseAllPost";
 import style from "./reflection.module.css";
 
+type Post = {
+  title: string;
+  date: string;
+  slug: string;
+  content: string;
+};
+
 type Props = {
-  posts: any[];
+  posts: Post[];
 };
 
 const ReflectionPage: VFC<Props> = ({ posts }) => {
@@ -16,13 +23,16 @@ const ReflectionPage: VFC<Props> = ({ posts }) => {
           <NavHeadComponent title="Reflection" sub="月次振り返り" />
         </div>
 
-        {posts.map((post, index) => {
-          return (
-            <a className={style.card} href={`/${post.slug}`} key={index}>
-              {post.title}
-            </a>
-          );
-        })}
+        <div className={style.posts}>
+          {posts.map((post, index) => {
+            return (
+              <a className={style.post} href={`/${post.slug}`} key={index}>
+                <p className={style.title}>{post.title}</p>
+                <p>{post.content.substring(0, 100)}...</p>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </>
   );
