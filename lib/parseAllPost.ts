@@ -16,14 +16,14 @@ export function getAllPosts() {
   return fullPathList.map((fullPath) => getSlug(fullPath));
 }
 
+export type Items = {
+  [key: string]: string;
+};
+
 export function getPostBySlug(realSlug: string, fields: string[] = []) {
   const fullPath = glob.sync(`${postsDirectory}/**/${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath[0], "utf8");
   const { data, content } = matter(fileContents);
-
-  type Items = {
-    [key: string]: string;
-  };
 
   const items: Items = {};
 

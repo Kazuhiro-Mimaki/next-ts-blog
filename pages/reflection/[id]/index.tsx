@@ -4,18 +4,11 @@ import {
   MarkdownComponent,
   NavHeadComponent,
 } from "../../../components/componentProvider";
-import { getAllPosts, getPostBySlug } from "../../../lib/parseAllPost";
+import { getAllPosts, getPostBySlug, Items } from "../../../lib/parseAllPost";
 import style from "../reflection.module.css";
 
-type Post = {
-  title: string;
-  date: string;
-  slug: string;
-  content: string;
-};
-
 type Props = {
-  post: Post;
+  post: Items;
 };
 
 const ReflectionPage: VFC<Props> = ({ post }) => {
@@ -26,18 +19,18 @@ const ReflectionPage: VFC<Props> = ({ post }) => {
           <NavHeadComponent title="Reflection" sub="月次振り返り" />
         </div>
 
-        <MarkdownComponent content={post.content} />
+        <MarkdownComponent content={post ? post.content : ""} />
       </div>
     </>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPosts().map((post) => `/reflection/${post.slug}`);
   return { paths, fallback: true };
 };
 
-export const getStaticProps: GetStaticProps = async (ctx): Promise<any> => {
+export const getStaticProps: GetStaticProps = (ctx) => {
   const currentPageSlug = ctx.params!.id as string;
   const post = getPostBySlug(currentPageSlug, [
     "title",
