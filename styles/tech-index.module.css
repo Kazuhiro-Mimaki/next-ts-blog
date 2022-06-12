@@ -1,0 +1,36 @@
+.container {
+  margin: 2rem auto 4rem;
+}
+
+.nav-head {
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.tab {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.current-tab {
+  border-bottom: solid 4px #4172b5;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    border-bottom: solid 1px #ccc;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .card {
+    /* padding: 0.5rem;
+    border-radius: 4px; */
+  }
+}

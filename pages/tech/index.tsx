@@ -1,5 +1,5 @@
 import zennFeedPosts from "../../_feed/_zenn/posts.json";
-import style from "../../styles/index.module.css";
+import style from "../../styles/tech-index.module.css";
 import { GetStaticProps } from "next";
 import axios, { AxiosResponse } from "axios";
 import { IQiitaAPIPost, QiitaPost } from "../../models/qiitaPost";
@@ -37,7 +37,7 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
   const qiitaPosts = qiitaApiPosts.map((post) => new QiitaPost(post));
   const zennPosts = zennFeedPosts.map((post) => new ZennPost(post));
 
-  const [openTab, setOpenTab] = useState(TAB.Qiita);
+  const [currentTab, setCurrentTab] = useState(TAB.Qiita);
 
   const tabs = [
     { service: "Qiita", type: TAB.Qiita },
@@ -61,10 +61,16 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
         </div>
 
         {/* タブ */}
-        <div>
+        <div className={style.tabs}>
           {tabs.map((tab, index) => {
             return (
-              <div key={index} onClick={() => setOpenTab(tab.type)}>
+              <div
+                className={`${style.tab} ${
+                  tabs[index].type === currentTab && style["current-tab"]
+                }`}
+                key={index}
+                onClick={() => setCurrentTab(tab.type)}
+              >
                 {tab.service}
               </div>
             );
@@ -72,7 +78,7 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
         </div>
 
         {/* タブに応じて内容を切り替え */}
-        <div>{contents(openTab)}</div>
+        {contents(currentTab)}
       </div>
     </>
   );
