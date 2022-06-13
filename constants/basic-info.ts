@@ -5,7 +5,7 @@ export const basicInfoList = [
   },
   {
     term: "Age",
-    description: "23",
+    description: "24",
   },
   {
     term: "Academic History",

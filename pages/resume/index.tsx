@@ -5,7 +5,6 @@ import {
 } from "../../components/componentProvider";
 import {
   basicInfoList,
-  skills,
   links,
   experiences,
 } from "../../constants/constantProvider";
@@ -49,20 +48,6 @@ const Resume = () => {
             />
           );
         })}
-      </section>
-      <div className={styles["section-title"]}>
-        <h2 className={styles.title}>Skill</h2>
-      </div>
-      <section className={styles["section"]}>
-        <ul className={styles.skills}>
-          {skills.map((skill, index) => {
-            return (
-              <li className={styles["list-item"]} key={index}>
-                - {skill}
-              </li>
-            );
-          })}
-        </ul>
       </section>
       <div className={styles["section-title"]}>
         <h2 className={styles.title}>Experience</h2>
