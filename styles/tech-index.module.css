@@ -16,12 +16,12 @@
 .tab {
   font-size: 1.2rem;
   cursor: pointer;
-  color: #999;
+  color: #aaa;
 }
 
 .current-tab {
-  color: #000;
-  border-bottom: solid 4px #4172b5;
+  color: #fff;
+  border-bottom: solid 3px #fff;
 }
 
 @media screen and (max-width: 768px) {
