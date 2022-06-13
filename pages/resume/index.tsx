@@ -1,5 +1,8 @@
 import styles from "./resume.module.css";
-import { DefinitionItemComponent } from "../../components/componentProvider";
+import {
+  DefinitionItemComponent,
+  NavHeadComponent,
+} from "../../components/componentProvider";
 import {
   basicInfoList,
   skills,
@@ -11,8 +14,12 @@ const Resume = () => {
   return (
     <div className={styles.container}>
       <div className={styles["page-title"]}>
-        <h2 className={styles.title}>RESUME</h2>
-        <p className={styles.memo}>基本情報・経歴など</p>
+        <NavHeadComponent
+          title="Resume"
+          sub="基本情報・経歴など"
+          borderColor="#ffdb4e"
+          shadowColor="#b48505"
+        />
       </div>
       <div className={styles["section-title"]}>
         <h2 className={styles.title}>Basic info</h2>

@@ -57,7 +57,12 @@ const TechPage: VFC<Props> = ({ qiitaApiPosts, zennFeedPosts }) => {
     <>
       <div className={style.container}>
         <div className={style["nav-head"]}>
-          <NavHeadComponent title="Tech" sub="技術関連" />
+          <NavHeadComponent
+            title="Tech"
+            sub="技術関連"
+            borderColor="#ff5161"
+            shadowColor="#d30302"
+          />
         </div>
 
         {/* タブ */}

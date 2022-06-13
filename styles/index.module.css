@@ -29,23 +29,9 @@
   font-size: 1.2rem;
 }
 
-.icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  filter: invert();
-}
-
 @media screen and (max-width: 768px) {
   .card {
     border-bottom: solid 1px #ccc;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .card {
-    /* padding: 0.5rem;
-    border-radius: 4px; */
   }
 }
 
@@ -54,51 +40,7 @@
 }
 
 .item-list {
-  gap: 2rem;
-}
-
-.item {
   display: flex;
-  align-items: center;
-}
-
-.item p,
-.item h2 {
-  margin: 0.5rem;
-  padding: 0;
-}
-
-.circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.note {
-  border: solid 2px #00fe9b;
-  box-shadow: 0 0 100px 1px #02c435, 0 0 10px 1px #02c435 inset;
-}
-
-.tech {
-  border: solid 2px #ff5161;
-  box-shadow: 0 0 100px 1px #d30302, 0 0 10px 1px #d30302 inset;
-}
-
-.reflection {
-  border: solid 2px #2dd9fe;
-  box-shadow: 0 0 100px 1px #00a3d5, 0 0 10px 1px #00a3d5 inset;
-}
-
-.resume {
-  border: solid 2px #ffdb4e;
-  box-shadow: 0 0 100px 1px #b48505, 0 0 10px 1px #b48505 inset;
-}
-
-.github {
-  border: solid 2px #fefefe;
-  box-shadow: 0 0 100px 1px #ffffff, 0 0 10px 1px #ffffff inset;
+  flex-direction: column;
+  gap: 1rem;
 }

@@ -16,7 +16,12 @@ const ReflectionPage: VFC<Props> = ({ post }) => {
     <>
       <div className={style.container}>
         <div className={style["section-title"]}>
-          <NavHeadComponent title="Reflection" sub="月次振り返り" />
+          <NavHeadComponent
+            title="Reflection"
+            sub="月次振り返り"
+            borderColor="#2dd9fe"
+            shadowColor="#00a3d5"
+          />
         </div>
 
         <MarkdownComponent content={post ? post.content : ""} />

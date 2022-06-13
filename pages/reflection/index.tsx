@@ -12,19 +12,24 @@ type Post = {
 };
 
 type Props = {
-  posts: Post[];
+  sortedPosts: Post[];
 };
 
-const ReflectionPage: VFC<Props> = ({ posts }) => {
+const ReflectionPage: VFC<Props> = ({ sortedPosts }) => {
   return (
     <>
       <div className={style.container}>
         <div className={style["section-title"]}>
-          <NavHeadComponent title="Reflection" sub="月次振り返り" />
+          <NavHeadComponent
+            title="Reflection"
+            sub="月次振り返り"
+            borderColor="#2dd9fe"
+            shadowColor="#00a3d5"
+          />
         </div>
 
         <div className={style.posts}>
-          {posts.map((post, index) => {
+          {sortedPosts.map((post, index) => {
             return (
               <a className={style.post} href={`/${post.slug}`} key={index}>
                 <p className={style.title}>{post.title}</p>
@@ -43,9 +48,15 @@ export const getStaticProps: GetStaticProps = async (): Promise<any> => {
     getPostBySlug(post.slug, ["title", "date", "slug", "content"])
   );
 
+  const sortedPosts = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  console.log(posts);
+
   return {
     props: {
-      posts,
+      sortedPosts,
     },
   };
 };

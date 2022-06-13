@@ -17,7 +17,12 @@ const NotePage: VFC<Props> = ({ noteFeedPosts }) => {
     <>
       <div className={style.container}>
         <div className={style["nav-head"]}>
-          <NavHeadComponent title="Note" sub="日々のメモとか気づきとか" />
+          <NavHeadComponent
+            title="Note"
+            sub="日々のメモとか気づきとか"
+            borderColor="#00fe9b"
+            shadowColor="#02c435"
+          />
         </div>
 
         <div className={style.posts}>

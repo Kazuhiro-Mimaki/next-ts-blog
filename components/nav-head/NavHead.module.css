@@ -1,8 +1,31 @@
-.title {
-  margin: 0;
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.item p,
+.item h2 {
+  margin: 0.5rem;
+  padding: 0;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: invert();
 }
 
 .sub {
-  margin: 0;
   color: #aaa;
 }
