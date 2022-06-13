@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const IndexPage = () => {
   return (
-    <>
-      <div className={style.container}>
+    <div className={style.container}>
+      <main className={style.main}>
         <h1 className={style.name}>Kazuhiro Mimaki</h1>
         <div className={style["item-list"]}>
           <section className={style.item}>
@@ -91,8 +91,8 @@ const IndexPage = () => {
             </div>
           </section>
         </div>
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 
