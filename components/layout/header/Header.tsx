@@ -10,7 +10,7 @@ const HeaderComponent = () => {
 
       <nav className={styles.nav}>
         <Link href="/">
-          <a className={styles.item}>All</a>
+          <a className={styles.item}>Home</a>
         </Link>
         <Link href="/note">
           <a className={styles.item}>Note</a>
