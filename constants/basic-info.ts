@@ -4,8 +4,8 @@ export const basicInfoList = [
     description: "箕牧和廣",
   },
   {
-    term: "Age",
-    description: "24",
+    term: "Birthday",
+    description: "1998/04/05",
   },
   {
     term: "Academic History",
