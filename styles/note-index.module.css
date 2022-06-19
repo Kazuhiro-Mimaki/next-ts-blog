@@ -15,12 +15,13 @@
 .post {
   padding: 1rem;
   border-radius: 4px;
-  border: solid 1px #777;
+  background: #202225;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: box-shadow 0.1s;
 }
 
 .post:hover {
-  box-shadow: 0px 0px 10px 1px #ddd;
+  border: 1px solid #777;
 }
 
 .post-title {
