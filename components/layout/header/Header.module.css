@@ -24,3 +24,9 @@
   margin: 0.5rem 2rem;
   color: #fff;
 }
+
+@media screen and (max-width: 480px) {
+  .item {
+    margin: 0.5rem 1rem;
+  }
+}

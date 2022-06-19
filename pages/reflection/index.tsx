@@ -33,7 +33,7 @@ const ReflectionPage: VFC<Props> = ({ sortedPosts }) => {
             return (
               <a className={style.post} href={`/${post.slug}`} key={index}>
                 <p className={style.title}>{post.title}</p>
-                <p>{post.content.substring(0, 100)}...</p>
+                <p className={style.lead}>{post.content.substring(0, 100)}...</p>
               </a>
             );
           })}

@@ -39,6 +39,10 @@
   animation-duration: 0.5s;
 }
 
+.lead {
+  color: #bbb;
+}
+
 @keyframes fadeIn {
   0% {
     width: 30px;
