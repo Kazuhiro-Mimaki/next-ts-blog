@@ -1,3 +1,5 @@
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
@@ -5,7 +7,15 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  return <main className={styles.layout}>{children}</main>;
+  return (
+    <div className={styles.layout}>
+      <Header />
+
+      <main className={styles.main}>{children}</main>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;

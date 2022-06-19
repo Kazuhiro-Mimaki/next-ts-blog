@@ -1,5 +1,3 @@
-import HeaderComponent from "./layout/header/Header";
-import FooterComponent from "./layout/footer/Footer";
 import LogoComponent from "./logo/Logo";
 import LayoutComponent from "./layout/Layout";
 import MarkdownComponent from "./markdown/Markdown";
@@ -11,8 +9,6 @@ import QiitaSectionComponent from "./tech/qiita/QiitaSection";
 import ZennSectionComponent from "./tech/zenn/ZennSection";
 
 export {
-  HeaderComponent,
-  FooterComponent,
   LogoComponent,
   LayoutComponent,
   MarkdownComponent,
