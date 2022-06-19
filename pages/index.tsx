@@ -5,7 +5,7 @@ const IndexPage = () => {
   return (
     <div className={style.container}>
       <main className={style.main}>
-        <h1 className={style.name}>Kazuhiro Mimaki&apos;s Portfolio</h1>
+        <h1 className={style.name}>Portfolio</h1>
         <div className={style["item-list"]}>
           <NavHeadComponent
             title="Note"
